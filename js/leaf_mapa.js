@@ -36,21 +36,6 @@ db.changes({
 
 //NO HACER LLAMADAS VIA AJAX. USAR Sync
 /*var xhrCR = new XMLHttpRequest();
-
-xhrCR.onreadystatechange = function(){
-	if (xhrCR.readyState==4 && xhrCR.status==200){
-		var data = JSON.parse(xhrCR.responseText);
-		console.log(data);
-		for (var i = 0; i < data.rows.length; i++) {
-			if ( data.rows[i].doc.geometry ){ // this skips non-GeoJSON docs, e.g. design documents
-				console.log(data.rows[i].doc.geometry);
-			}
-		}
-	}
-}
-
-xhrCR.open('GET', urlCCRR, true, username, password);
-xhrCR.withCredentials = true;
 xhrCR.send(null);*/
 
 function showTodos() {
