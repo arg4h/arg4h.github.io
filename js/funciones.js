@@ -187,9 +187,11 @@ function cerrarMenuNivel4(){
         if(link_recibe == '1_TA'){
 
         array_nivel3 = [
-                {"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
+		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "name_layer": layer_1101 },
+		{"id":1, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "name_layer": layer_rutas_provinciales },
+                /*{"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
                 {"id":2, "name":"Red Vial Provincial", "cod":"RVP"},
-                {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}];
+                {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}*/];
 
         } else if(link_recibe == '2_TF'){
 
@@ -236,6 +238,14 @@ function cerrarMenuNivel4(){
                 var name = array_nivel3[i].name;
                 var cod = array_nivel3[i].cod;
                 var li_id ="nivel3_li_"+id+"_"+cod;
+		var subC = array_nivel3[i].subcarpeta;
+                if (subC=='no'){
+                	var name_layer = array_nivel3[i].name_layer;
+                }
+                if(subC=='si'){
+                	var ul4 = document.createElement("UL");
+                	ul5.setAttribute("id", "nivel4_"+id+"_"+cod);
+                }
 
                 var ul = document.createElement("UL");
                 ul.setAttribute("id", "nivel3_"+id+"_"+cod);
@@ -253,8 +263,25 @@ function cerrarMenuNivel4(){
                 li.appendChild(link);
                 link.appendChild(text);
 
-                link.addEventListener("click", crearCapasNivel4, false);//crearCapasNivel4//function() {crearCapasNivel4(this.id)}
-        }
+		if (subC=='si'){
+                                li_insert_in =document.getElementById(link_select_id).parentNode;
+                                console.log(li_insert_in);
+
+                                li_insert_in.appendChild(ul5);
+                                ul5.appendChild(li);
+                                li.appendChild(link);
+                                link.appendChild(text);
+				link.addEventListener("click", crearCapasNivel4, false);
+                        }
+                        if (subC=='no'){
+                                ul.appendChild(li);
+                                li.appendChild(link);
+                                link.appendChild(text);
+                                link.addEventListener("click", cargarCapas1, false);
+                        }
+
+                //link.addEventListener("click", crearCapasNivel4, false);//crearCapasNivel4//function() {crearCapasNivel4(this.id)}
+        }//cierra el for
         link_n2.removeEventListener("click", crearSubCarpetas, false);
         link_n2.addEventListener("click", cerrarMenu, false);
 	//li.addEventListener("click", alerta, false);
@@ -350,17 +377,14 @@ function crearCapasNivel4(){
 }
 function cargarCapas1(){
 	var link_id = this.id;
-	//var name_layer = name;
 	console.log(this);
-	//name_layer.addTo(map);
-	//layer_1101.addTo(map);
 	
 	//loadCapas(link_id);// <=====Llamar
 
 	if (link_id == 'TA_1_RA') {
-		layer_1101.addTo(map);
-		this.removeEventListener("click",cargarCapas1, false);
-		this.addEventListener("click", removeCapas1, false);
+		layer_1101.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+	} else if (link_id == 'TA_2_RP'){
+		layer_rutas_provinciales.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	}
 }
 
@@ -370,10 +394,10 @@ function removeCapas1(){
 	console.log('remover capa');
 	
 	if (link_id == 'TA_1_RA') {
-		map.removeLayer(layer_1101);
-		this.removeEventListener("click", removeCapas1, false);
-		this.addEventListener("click", cargarCapas1, false);
+		map.removeLayer(layer_1101);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
 
+	}else if (link_id == 'TA_2_RP'){
+		map.removeLayer(layer_rutas_provinciales);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
 	}
 
 }
