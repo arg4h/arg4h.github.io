@@ -188,7 +188,8 @@ function cerrarMenuNivel4(){
 
         array_nivel3 = [
 		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "name_layer": layer_1101 },
-		{"id":1, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "name_layer": layer_rutas_provinciales },
+		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "name_layer": layer_rutas_provinciales },
+		{"id":3, "name":"Líneas de Ferrocarril", "cod":"TA_3_LF", "subcarpeta":"no", "name_layer": layer_red_ferrocarril },
                 /*{"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
                 {"id":2, "name":"Red Vial Provincial", "cod":"RVP"},
                 {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}*/];
@@ -385,6 +386,9 @@ function cargarCapas1(){
 		layer_1101.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if (link_id == 'TA_2_RP'){
 		layer_rutas_provinciales.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+	} else if (link_id == 'TA_3_LF'){
+		layer_red_ferrocarril.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+
 	}
 }
 
@@ -398,6 +402,8 @@ function removeCapas1(){
 
 	}else if (link_id == 'TA_2_RP'){
 		map.removeLayer(layer_rutas_provinciales);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+	} else if (link_id == 'TA_3_LF'){
+		 map.removeLayer(layer_red_ferrocarril);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
 	}
 
 }

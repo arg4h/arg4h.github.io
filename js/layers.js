@@ -20,6 +20,13 @@ layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoser
         transparent: true
 });
 
+layer_red_ferrocarril = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
+        layers: '_3.4.2.2.5.red_adif_20.11.2018.view',
+        crs: L.CRS.EPSG4326,
+        format: 'image/png',
+        transparent: true
+});
+
 //********************************ABRE
 var ccrrVectorial;
 
