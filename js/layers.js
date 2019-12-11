@@ -13,6 +13,13 @@ layer_1101 = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms
         transparent: true
 });
 
+layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
+        layers: '_3.4.1.7.red_vial_ign_ont_a_prov_view',
+        crs: L.CRS.EPSG4326,
+        format: 'image/png',
+        transparent: true
+});
+
 //********************************ABRE
 var ccrrVectorial;
 
