@@ -267,7 +267,7 @@ xhrC.send();
 
 
 	peticionAjax(urlTerremotos)
-      .then(function (respuesta) {
+      	.then(function (respuesta) {
         var datos = JSON.parse(respuesta);
 	console.log(datos);
         var capaVectorial = L.geoJSON(datos, {
