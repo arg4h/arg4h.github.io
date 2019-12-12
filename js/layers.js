@@ -263,8 +263,8 @@ xhrC.send();
     }
 
     //var urlTerremotos = 'https://ide.transporte.gob.ar/geoserver/c_rurales_6/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=c_rurales_6%3Acaminos_rurales.view&outputFormat=application%2Fjson';
-    var urlTerremotos = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
-
+    //var urlTerremotos = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+	var urlTerremotos = "https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/barrios_populares.geojson";
 
 	peticionAjax(urlTerremotos)
       	.then(function (respuesta) {
@@ -277,9 +277,11 @@ xhrC.send();
         });
 
         capaVectorial.bindPopup(function (layer) {
-          var fecha = 'Fecha: ' + new Date(layer.feature.properties.time).toLocaleString();
-          var magnitud = 'Magnitud: ' + layer.feature.properties.mag;
-          return '<div>' + fecha + '<br>' + magnitud + '</div>';
+          //var fecha = 'Fecha: ' + new Date(layer.feature.properties.time).toLocaleString();
+          //var magnitud = 'Magnitud: ' + layer.feature.properties.mag;
+          //return '<div>' + fecha + '<br>' + magnitud + '</div>';
+	
+	return 	"<div style='max-width:300px;'><h4><small>ID: " + layer.feature.properties.id_renabap + "</small></h4><h4>" + layer.feature.properties.nombre_bar + "</h4><p>"+layer.feature.properties.departamen+", "+layer.feature.properties.localidad + ", "+ layer.feature.properties.provincia + ".</p></div>";
         });
 
         capaVectorial.addTo(map);
