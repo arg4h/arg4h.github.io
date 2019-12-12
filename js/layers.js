@@ -20,8 +20,22 @@ layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoser
         transparent: true
 });
 
+layer_caminos_rurales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/c_rurales_6/wms?', {
+        layers: 'caminos_rurales.view',
+        crs: L.CRS.EPSG4326,
+        format: 'image/png',
+        transparent: true
+});
+
 layer_red_ferrocarril = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
         layers: '_3.4.2.2.5.red_adif_20.11.2018.view',
+        crs: L.CRS.EPSG4326,
+        format: 'image/png',
+        transparent: true
+});
+
+layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
+        layers: 'zonas_horticolas_view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
         transparent: true

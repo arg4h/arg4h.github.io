@@ -189,7 +189,8 @@ function cerrarMenuNivel4(){
         array_nivel3 = [
 		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "name_layer": layer_1101 },
 		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "name_layer": layer_rutas_provinciales },
-		{"id":3, "name":"Líneas de Ferrocarril", "cod":"TA_3_LF", "subcarpeta":"no", "name_layer": layer_red_ferrocarril },
+		{"id":3, "name":"Caminos Rurales", "cod":"TA_4_CR", "subcarpeta":"no", "name_layer": layer_caminos_rurales },
+		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_3_LF", "subcarpeta":"no", "name_layer": layer_red_ferrocarril },
                 /*{"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
                 {"id":2, "name":"Red Vial Provincial", "cod":"RVP"},
                 {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}*/];
@@ -197,9 +198,10 @@ function cerrarMenuNivel4(){
         } else if(link_recibe == '2_TF'){
 
         array_nivel3 = [
-                {"id":1, "name":"Red Ferroviaria Nacional", "cod":"RFN"},
+		{"id":1, "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "name_layer": layer_zonas_frutih },
+                /*{"id":1, "name":"Red Ferroviaria Nacional", "cod":"RFN"},
                 {"id":2, "name":"Red Subterraneos", "cod":"RS"},
-                {"id":3, "name":"Servicio de Pasajeros", "cod":"SP"}
+                {"id":3, "name":"Servicio de Pasajeros", "cod":"SP"}*/
                 ];
 
         } else if(link_recibe == '3_TFM'){
@@ -389,6 +391,10 @@ function cargarCapas1(){
 	} else if (link_id == 'TA_3_LF'){
 		layer_red_ferrocarril.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 
+	} else if (link_id == 'AH_1_FH'){
+		layer_zonas_frutih.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+	} else if(link_id =='TA_4_CR'){
+		layer_caminos_rurales.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	}
 }
 
@@ -404,8 +410,11 @@ function removeCapas1(){
 		map.removeLayer(layer_rutas_provinciales);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
 	} else if (link_id == 'TA_3_LF'){
 		 map.removeLayer(layer_red_ferrocarril);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+	} else if (link_id == 'AH_1_FH'){
+		map.removeLayer(layer_zonas_frutih);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+	} else if(link_id =='TA_4_CR'){
+		map.removeLayer(layer_caminos_rurales);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
 	}
-
 }
 /*function loadCapas(id){
 
