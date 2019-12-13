@@ -43,12 +43,54 @@ layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/ob
 
 //********************************ABRE
 var ccrrVectorial;
-
+var comedoresVectorial;
 //var layerP = L.geoJson.pouch("https://90705519-98e2-4acf-b321-1466df6704c8-bluemix.cloudant.com/ccrr").addTo(map);
 //console.log(layerP);
 
+function comedoresStyle(feature) {
+  	return {
+    		fillColor: "#FF00FF",
+    		fillOpacity: 1,
+    		color: '#B04173',
+  	};
+}
+function loadComedores(){
+	var urlComedores = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/comedores_comunitarios.geojson';
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', urlComedores);
+
+	xhr.onload = function(e) {
+		var data = JSON.parse(this.response);
+        	console.log(data);
+
+		var geojsonMarkerOptions = {
+                	radius: 5,
+                	fillColor: "#ff7800",
+                	color: "#000",
+                	weight: 1,
+                	opacity: 1,
+                	fillOpacity: 0.8
+        	};
+
+		comedoresVectorial = L.geoJson(data, {
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, geojsonMarkerOptions);
+			},
+			style: comedoresStyle,
+			onEachFeature: onEachFeature
+		});
+
+		comedoresVectorial.addTo(map);
+	}
+	
+
+	xhr.send();
+
+} //cierra loadComedores
+
 function loadGeojson(){
-var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';
+	var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';
 
 var xhr = new XMLHttpRequest();
 xhr.open('GET', urlCity);
