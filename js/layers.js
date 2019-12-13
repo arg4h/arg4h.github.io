@@ -366,18 +366,8 @@ function startEditing(e) {
 	console.log("Feature" + feature);
 	console.log(feature);
 
-	drawnItems.addLayer(selectedFeature);//1ero seleccionar y al usar la herramienta lo muestra editable
-	/*var toolbarE = new L.EditToolbar.Edit(map, {
-                //featureGroup: drawControl.options.featureGroup,
-		featureGroup: ._featureGroup,
-		//featureGroup: drawnItems,
-                selectedPathOptions: drawControl.options.edit.selectedPathOptions
-            });
-	toolbarE.enable();*/
-	//e.target.editing.enable();
-	//layer.editing.enable();
-	//var mostrar = e.target.editing;
-	console.log(drawnItems);
+	/*drawnItems.addLayer(selectedFeature);//1ero seleccionar y al usar la herramienta lo muestra editable
+	console.log(drawnItems);*/
 
 	const editBtn = document.querySelector('.leaflet-draw-edit-edit');
 	console.log(editBtn);
