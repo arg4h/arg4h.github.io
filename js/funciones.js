@@ -426,7 +426,7 @@ function removeCapas1(){
 	}
 }
 /*function loadCapas(id){
-
+	//
 	var id = id;
 	if(id == 'TA_1_RA'){ layer_1101.addTo(map); 
 	console.log(layer_1101)}
