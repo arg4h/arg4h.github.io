@@ -153,7 +153,7 @@ if (remoteCouch) {
 
 map.zoomControl.setPosition('bottomright');//topright
 
-var drawnItems = new L.FeatureGroup();
+/*var drawnItems = new L.FeatureGroup();
 //console.log(drawnItems);
 
         map.addLayer(drawnItems);
@@ -164,8 +164,7 @@ var drawnItems = new L.FeatureGroup();
             }
         });
 map.addControl(drawControl);
-drawControl.setPosition('topright');	
-	//console.log(drawControl.edit);
+drawControl.setPosition('topright');*/	
 
 /*var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';
 
