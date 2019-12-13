@@ -375,3 +375,21 @@ map.on('zoomend' , function (e) {
 		//dibujar();
 	}
 });
+
+//https://www.e-education.psu.edu/geog585/node/765
+map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
+	var _layers = this._layers,
+      	layers = [],
+      	versions = [],
+      	styles = [];
+
+    	for (var x in _layers) {
+      		var _layer = _layers[x];
+      		if (_layer.wmsParams) {
+        		layers.push(_layer.wmsParams.layers);
+        		versions.push(_layer.wmsParams.version);
+        		styles.push(_layer.wmsParams.styles);
+			console.log(layers);
+      		}
+    	}
+});

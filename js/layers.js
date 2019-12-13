@@ -291,6 +291,7 @@ xhrC.send();
         });
 
         capaVectorial.bindPopup(function (layer) {
+		console.log(layer.feature);
           //var fecha = 'Fecha: ' + new Date(layer.feature.properties.time).toLocaleString();
           //var magnitud = 'Magnitud: ' + layer.feature.properties.mag;
           //return '<div>' + fecha + '<br>' + magnitud + '</div>';

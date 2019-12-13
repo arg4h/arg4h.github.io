@@ -175,9 +175,7 @@ function cerrarMenuNivel4(){
                         link.removeEventListener("click", cerrarMenu, false); //<=========REMUEVE esto
                         link.addEventListener("click", crearCapasNivel4, false); // <===== AGREGO esto
                 }
-
         }
-
 
         function crearSubCarpetas(){////////////////////////////**************************************************
         var link_recibe = this.id;
@@ -255,16 +253,21 @@ function cerrarMenuNivel4(){
                 var li= document.createElement("Li");
                 li.setAttribute("id", li_id);
                 var link = document.createElement("A");
+
+		var link_2 = document.createElement("A");
                 link.href = "#";
                 link.setAttribute("id", cod);
                 var text = document.createTextNode(name);
+		var text_2 = document.createTextNode('+');
 
                 li_insert_in =document.getElementById(link_recibe).parentNode;
                 console.log(li_insert_in);
                 li_insert_in.appendChild(ul);
                 ul.appendChild(li);
-                li.appendChild(link);
-                link.appendChild(text);
+                //li.appendChild(link_2);
+		li.appendChild(link);
+                //link_2.appendChild(text_2);
+		link.appendChild(text);
 
 		if (subC=='si'){
                                 li_insert_in =document.getElementById(link_select_id).parentNode;
@@ -279,7 +282,9 @@ function cerrarMenuNivel4(){
                         if (subC=='no'){
                                 ul.appendChild(li);
                                 li.appendChild(link);
+				li.appendChild(link_2);
                                 link.appendChild(text);
+				link_2.appendChild(text_2);
                                 link.addEventListener("click", cargarCapas1, false);
                         }
 
