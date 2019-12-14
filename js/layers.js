@@ -82,6 +82,7 @@ function loadComedores(){
 		});
 
 		comedoresVectorial.addTo(map);
+		comedoresVectorial.bringToFront();
 	}
 	
 

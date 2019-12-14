@@ -391,15 +391,15 @@ function cargarCapas1(){
 	//loadCapas(link_id);// <=====Llamar
 
 	if (link_id == 'TA_1_RA') {
-		layer_1101.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_1101.addTo(map);layer_1101.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if (link_id == 'TA_2_RP'){
-		layer_rutas_provinciales.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_rutas_provinciales.addTo(map);layer_rutas_provinciales.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if (link_id == 'TA_3_LF'){
-		layer_red_ferrocarril.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_red_ferrocarril.addTo(map);layer_red_ferrocarril.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if(link_id =='TA_4_CR'){
-                layer_caminos_rurales.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+                layer_caminos_rurales.addTo(map);layer_caminos_rurales.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if (link_id == 'AH_1_FH'){
-		layer_zonas_frutih.addTo(map);this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_zonas_frutih.addTo(map);layer_zonas_frutih.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if(link_id =='AH_2_CC'){
 		loadComedores();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	}
