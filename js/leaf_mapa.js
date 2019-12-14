@@ -1,5 +1,8 @@
 var zoom = false;
 var drawControl_Existe = false;
+var BING_KEY = 'AtfyQFLwAqMac5Le45E3ZNuHoolIPOnbS5lneKbIaWJI60e9cBfcvxZeBKjU-tH2';
+
+
 
 /*console.log(concatenar);
 var palabra = "token ";
@@ -206,14 +209,16 @@ var GoogleHybrid = new L.Google('HYBRID');
 
 GoogleAerial.addTo(map);*/
 
-var OSM = L.tileLayer( 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'OpenStreetMap'
-}).addTo(map);
-
 var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
 	maxZoom: 18
+}).addTo(map);
+
+var bingLayer = L.tileLayer.bing(BING_KEY).addTo(map);
+
+var OSM = L.tileLayer( 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'OpenStreetMap'
 }).addTo(map);
 
 
@@ -230,7 +235,8 @@ map.on('draw:created', function (e) {
 
 var baseMaps = {
     	"<span style='color: gray'>OpenStreetMap</span>": OSM,
-	"<span style='color: gray'>Carto</span>": CartoDB_DarkMatter
+	"<span style='color: gray'>Carto</span>": CartoDB_DarkMatter,
+	"<span style='color: gray'>Bing</span>": bingLayer
     //treets": streets
 };
 
