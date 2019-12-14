@@ -15,6 +15,12 @@ var map = L.map( 'map', {
     zoom: 4
 });
 
+L.easyPrint({
+	title: 'Mi botón para imprimir',
+	position: 'bottomright',
+	elementsToHide: 'p, h2, .leaflet-control-zoom'
+}).addTo(map);
+
 var db = new PouchDB('ccrr');
 var username = 'wastainceardsseransomete';
 var password = '3b8f7dc469d50f9b110778a754ee599cec12e49c';
