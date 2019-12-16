@@ -432,8 +432,7 @@ function removeCapas1(){
 	console.log(layer_1101)}
 
 }*/
-
-}
+}//CIERRA creardiv
 
 //////////ESTO DE ABAJO SE VA
 /*function crearCarpetasSub1(){

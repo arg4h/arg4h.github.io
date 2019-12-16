@@ -388,7 +388,10 @@ map.on('zoomend' , function (e) {
 });
 
 //https://www.e-education.psu.edu/geog585/node/765
+var clickedLatLng = {lat: null, lng: null}; 
 map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
+
+	var pixelPosition = e.layerPoint;
 	var _layers = this._layers,
       	layers = [],
       	versions = [],
@@ -403,4 +406,108 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 			console.log(layers);
       		}
     	}
+
+	var clickedLatLng = map.layerPointToLatLng(pixelPosition);
+	console.log(clickedLatLng);
+	//var loc = '(' + e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3) + ')';
+	var sw = map.options.crs.project(map.getBounds().getSouthWest());
+	var ne = map.options.crs.project(map.getBounds().getNorthEast());
+	var BBOX = sw.x + "," + sw.y + "," + ne.x + "," + ne.y;
+	//var BBOX = map.getBounds()._southWest.lng+","+map.getBounds()._southWest.lat+","+map.getBounds()._northEast.lng+","+map.getBounds()._northEast.lat;
+	var WIDTH = map.getSize().x;
+	var HEIGHT = map.getSize().y;
+	var X = Math.trunc(map.layerPointToContainerPoint(e.layerPoint).x);
+	var Y = Math.trunc(map.layerPointToContainerPoint(e.layerPoint).y);
+	//var X = map.layerPointToContainerPoint(e.layerPoint).x;
+	//var Y = map.layerPointToContainerPoint(e.layerPoint).y;
+	console.log(X);
+	console.log(Y);
+
+	var owsrootUrl = 'https://ide.transporte.gob.ar/geoserver/wms?';
+
+	var defaultParameters = {
+        	SERVICE: 'WMS',
+        	VERSION: '1.1.1',
+        	REQUEST: 'GetFeatureInfo',
+		LAYERS: 'observ:zonas_horticolas_view',
+		QUERY_LAYERS: 'observ:zonas_horticolas_view',
+		STYLE: '',
+		BBOX: BBOX,
+		FEATURE_COUNT:5,
+		HEIGHT:HEIGHT,
+		WIDTH: WIDTH,
+		FORMAT: 'image/png',
+		INFO_FORMAT: 'application/json',
+		SRS: 'EPSG:3857',
+		X: X,
+		Y: Y
+	};	
+	//var URL = 'https://ide.transporte.gob.ar/geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=observ:zonas_horticolas_view&QUERY_LAYERS=observ:zonas_horticolas_view&STYLES=&BBOX='+BBOX+'&FEATURE_COUNT=5&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&FORMAT=image%2Fpng&INFO_FORMAT=text%2Fhtml&SRS=EPSG%3A4326&X='+X+'&Y='+Y;
+
+	var parameters = L.Util.extend(defaultParameters);
+
+	var URL = owsrootUrl + L.Util.getParamString(parameters);
+	console.log(URL);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', URL);
+
+        xhr.onload = function(e) {
+                var data = JSON.parse(this.response);
+                console.log(data);
+
+		if (data.features.length == 0) {
+			console.log('SIN feature');
+		} else {
+			console.log('tengo features');
+
+			var features = data.features;
+			var html;
+			for (var i in features) {
+				var feature = features[i];
+				var properties=feature.properties;
+
+				html+='<br/><table><caption>'+feature.id+'</caption>';
+				html+='<thead><tr><th>Nombre</th><th>Datos</th></tr></thead><tbody>';
+
+				for (var x in properties) {
+                			if(x!='bbox'){
+                  				html+='<tr><th>'+x+'</th><td>'+properties[x]+'</td></tr>';
+                			}
+              			}
+              			html+='</tbody></table>';
+			}
+
+			var popup = new L.Popup({
+            			maxWidth: 300
+         		});
+			popup.setContent(html);
+			popup.setLatLng(clickedLatLng);
+			map.openPopup(popup);
+		}
+
+                /*var geojsonMarkerOptions = {
+                        radius: 5,
+                        fillColor: "#ff7800",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                };
+
+                comedoresVectorial = L.geoJson(data, {
+                        pointToLayer: function (feature, latlng) {
+                                return L.circleMarker(latlng, geojsonMarkerOptions);
+                        },
+                        style: comedoresStyle,
+                        onEachFeature: onEachFeature
+                });
+
+                comedoresVectorial.addTo(map);
+                comedoresVectorial.bringToFront();*/
+        }
+
+
+        xhr.send();
+	
 });
