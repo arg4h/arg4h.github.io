@@ -65,7 +65,7 @@ function creaDivs(){
                 //console.log(ul);
                 var li=document.createElement("Li");
                 li.setAttribute("id", li_id);
-
+		li.className = "menu";
                 var link = document.createElement("A");
                 id_link = "id_link_nivel2_"+numero;
                 link.setAttribute("id", codigo);

@@ -391,6 +391,7 @@ map.on('zoomend' , function (e) {
 var clickedLatLng = {lat: null, lng: null}; 
 map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 
+//if(map.hasLayer(this._layers)){
 	var pixelPosition = e.layerPoint;
 	var _layers = this._layers,
       	layers = [],
@@ -400,6 +401,7 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
     	for (var x in _layers) {
       		var _layer = _layers[x];
       		if (_layer.wmsParams) {
+			console.log(_layer.wmsParams);
         		layers.push(_layer.wmsParams.layers);
         		versions.push(_layer.wmsParams.version);
         		styles.push(_layer.wmsParams.styles);
@@ -485,29 +487,7 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 			popup.setLatLng(clickedLatLng);
 			map.openPopup(popup);
 		}
-
-                /*var geojsonMarkerOptions = {
-                        radius: 5,
-                        fillColor: "#ff7800",
-                        color: "#000",
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 0.8
-                };
-
-                comedoresVectorial = L.geoJson(data, {
-                        pointToLayer: function (feature, latlng) {
-                                return L.circleMarker(latlng, geojsonMarkerOptions);
-                        },
-                        style: comedoresStyle,
-                        onEachFeature: onEachFeature
-                });
-
-                comedoresVectorial.addTo(map);
-                comedoresVectorial.bringToFront();*/
         }
-
-
         xhr.send();
-	
-});
+//}//cierra hasLayer
+});//cierra map on click
