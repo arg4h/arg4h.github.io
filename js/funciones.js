@@ -256,6 +256,8 @@ function cerrarMenuNivel4(){
                 var link = document.createElement("A");
 
 		var link_2 = document.createElement("A");
+		var imagen_ver = document.createElement("I");
+		imagen_ver.className = "fa fa-eye-slash = 2x Larger";
                 link.href = "#";
                 link.setAttribute("id", cod);
                 var text = document.createTextNode(name);
@@ -283,9 +285,10 @@ function cerrarMenuNivel4(){
                         if (subC=='no'){
                                 ul.appendChild(li);
                                 li.appendChild(link);
-				li.appendChild(link_2);
+				li.appendChild(imagen_ver);
+				//li.appendChild(link_2);
                                 link.appendChild(text);
-				link_2.appendChild(text_2);
+				//link_2.appendChild(text_2);
                                 link.addEventListener("click", cargarCapas1, false);
                         }
 

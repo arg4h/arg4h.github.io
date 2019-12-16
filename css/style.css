@@ -55,7 +55,7 @@ input:invalid{
 	z-index: 2;
 }
 
-.menu li{
+.menu ul li{
 	height:28px;
     /*padding:0;
     list-style:none;
@@ -64,6 +64,16 @@ input:invalid{
     background:#c1c1c1;*/
     //border: 1px solid rgba(0,0,0,0.8);
 }
+
+.menu ul li:hover{
+	height:30px;
+	color: cyan;
+}
+
+/*NO Funciono - 16-12-2019
+.menu li a:hover{
+	color: blue;
+}*/
  
 /*.menu li a{
     display: block;
