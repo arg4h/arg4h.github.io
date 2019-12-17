@@ -81,7 +81,7 @@ function creaDivs(){
 
                 link.addEventListener("click", crearSubCarpetas, false); //function() {crearSubCarpetas(this.id), false}
                 li.addEventListener("click", alerta, false);
-        }
+        }// cierra FOR arraySegundoNivel
 
 	}
 //}
@@ -177,7 +177,7 @@ function cerrarMenuNivel4(){
                 }
         }
 
-        function crearSubCarpetas(){////////////////////////////**************************************************
+function crearSubCarpetas(){////////////////////////////**************************************************
         var link_recibe = this.id;
         console.log("recibo codigo "+link_recibe);
         var link_n2 = document.getElementById(link_recibe);
@@ -285,7 +285,7 @@ function cerrarMenuNivel4(){
                         if (subC=='no'){
                                 ul.appendChild(li);
                                 li.appendChild(link);
-				li.appendChild(imagen_ver);
+				//li.appendChild(imagen_ver);
 				//li.appendChild(link_2);
                                 link.appendChild(text);
 				//link_2.appendChild(text_2);
@@ -390,43 +390,53 @@ function crearCapasNivel4(){
 function cargarCapas1(){
 	var link_id = this.id;
 	console.log(this);
+
+	var imagen_ver = document.createElement("I");
+        imagen_ver.className = "fa fa-eye = 2x Larger";
+
+	this.appendChild(imagen_ver);
 	
 	//loadCapas(link_id);// <=====Llamar
 
 	if (link_id == 'TA_1_RA') {
 		layer_1101.addTo(map);layer_1101.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 	} else if (link_id == 'TA_2_RP'){
-		layer_rutas_provinciales.addTo(map);layer_rutas_provinciales.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_rutas_provinciales.addTo(map);layer_rutas_provinciales.bringToFront();
 	} else if (link_id == 'TA_3_LF'){
-		layer_red_ferrocarril.addTo(map);layer_red_ferrocarril.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_red_ferrocarril.addTo(map);layer_red_ferrocarril.bringToFront();
 	} else if(link_id =='TA_4_CR'){
-                layer_caminos_rurales.addTo(map);layer_caminos_rurales.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+                layer_caminos_rurales.addTo(map);layer_caminos_rurales.bringToFront();
 	} else if (link_id == 'AH_1_FH'){
-		layer_zonas_frutih.addTo(map);layer_zonas_frutih.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_zonas_frutih.addTo(map);layer_zonas_frutih.bringToFront();
 	} else if(link_id =='AH_2_CC'){
-		loadComedores();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		loadComedores();
 	}
+
+	this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
 }
 
 function removeCapas1(){
 	var link_id = this.id;
 	console.log(this);
 	console.log('remover capa');
+
+	this.removeChild(this.childNodes[1]);
 	
 	if (link_id == 'TA_1_RA') {
-		map.removeLayer(layer_1101);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
-
+		map.removeLayer(layer_1101);
 	}else if (link_id == 'TA_2_RP'){
-		map.removeLayer(layer_rutas_provinciales);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+		map.removeLayer(layer_rutas_provinciales);
 	} else if (link_id == 'TA_3_LF'){
-		 map.removeLayer(layer_red_ferrocarril);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+		 map.removeLayer(layer_red_ferrocarril);
 	} else if(link_id =='TA_4_CR'){
-                map.removeLayer(layer_caminos_rurales);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+                map.removeLayer(layer_caminos_rurales);
 	} else if (link_id == 'AH_1_FH'){
-		map.removeLayer(layer_zonas_frutih);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+		map.removeLayer(layer_zonas_frutih);
 	} else if(link_id =='AH_2_CC'){
-		map.removeLayer(comedoresVectorial);this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+		map.removeLayer(comedoresVectorial);
 	}
+
+	this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
 }
 /*function loadCapas(id){
 	//
@@ -437,75 +447,3 @@ function removeCapas1(){
 }*/
 }//CIERRA creardiv
 
-//////////ESTO DE ABAJO SE VA
-/*function crearCarpetasSub1(){
-	console.log('Crear carpetas del Primer Menu');
-	var menu = document.getElementById('li1_1_id');
-	var sub1 = document.getElementById('ul_submenu_1_A');
-	var sub2 = document.getElementById('ul_submenu_1_B');
-	var sub3 = document.getElementById('ul_submenu_1_C');
-	var sub4 = document.getElementById('ul_submenu_1_D');
-	
-	if( sub1 == null){
-	var ul_sub1_A = document.createElement("UL");
-        ul_sub1_A.setAttribute("id", "ul_submenu_1_A");
-
-	var lista1_1_1 = document.createElement("LI");
-        lista1_1_1.setAttribute("id", "li1_1_1_id");
-        var link1_1_1 = document.createElement("A");
-        link1_1_1.href = "#";
-        link1_1_1.onclick= function(){crearCapasRVNacional()};
-        var t1_1_1 = document.createTextNode("Red Vial Nacional");
-
-	menu.appendChild(ul_sub1_A);
-	ul_sub1_A.appendChild(lista1_1_1);
-	lista1_1_1.appendChild(link1_1_1);
-	link1_1_1.appendChild(t1_1_1);
-
-	} else { console.log('ya existe, no hacer nada') }
-
-	if( sub2 == null){
-        var ul_sub1_B = document.createElement("UL");
-        ul_sub1_B.setAttribute("id", "ul_submenu_1_B");
-
-        var lista1_2_1 = document.createElement("LI");
-        lista1_2_1.setAttribute("id", "li1_2_1_id");
-        var link1_2_1 = document.createElement("A");
-        link1_2_1.href = "#";
-        var t1_2_1 = document.createTextNode("Red Vial Provincial");
-
-        menu.appendChild(ul_sub1_B);
-        ul_sub1_B.appendChild(lista1_2_1);
-        lista1_2_1.appendChild(link1_2_1);
-        link1_2_1.appendChild(t1_2_1);
-
-        } else { console.log('ya existe, no hacer nada') }	
-}*/
-
-/*function crearCapasRVNacional(){
-	if(submenu_1_A == null){
-
-	var ul_sub1_A_capas = document.createElement("UL");
-        ul_sub1_A_capas.setAttribute("id", "ul_submenu_1_A_capas");
-
-	var li_layer_1101 = document.createElement("LI");
-	li_layer_1101.setAttribute("id", "id_li_layer_1101");
-	var link_layer_1101 = document.createElement("A");
-	link_layer_1101.href = "#";
-	var text_layer_1101 = document.createTextNode("Rutas Nacionales");
-
-	submenu1.appendChild(ul_sub1_A_capas);
-	ul_sub1_A_capas.appendChild(li_layer_1101);
-	li_layer_1101.appendChild(link_layer_1101);
-	link_layer_1101.appendChild(text_layer_1101);
-	var id_layer = link_layer_1101.id;
-	var name_layer = 'layer_1101';
-	var layer = layer_1101;
-	link_layer_1101.onclick= function(){cargarCapas1(name_layer, layer)};
-
-	} else { console.log('ya existe el li de la capa')};
-
-}*/
-
-/*function cargarCapas1(name, layer){
-}*/
