@@ -102,53 +102,34 @@ function alerta(){
 }
 
 function cerrarMenu(){
-                console.log('tiene que eliminar los items');
-                var link = this;
-                console.log(link);
-                var link_id = link.id;
-                console.log(link_id);
+	console.log('tiene que eliminar los items');
+        var link = this;
+        console.log(link);
+        var link_id = link.id;
+        console.log(link_id);
 
-                var li_superior = document.getElementById(link_id).parentNode;
-                console.log(li_superior);
-                var li_superior_id = li_superior.id;
+        var li_superior = document.getElementById(link_id).parentNode;
+        console.log(li_superior);
+        var li_superior_id = li_superior.id;
 
-                /*var ul_eliminar =document.getElementById(li_superior_id).getElementsByTagName("ul");
- *  *                 console.log(ul_eliminar);
- *   *                                 console.log(ul_eliminar.length);*/
+        var nodos_hijos = li_superior.childNodes;
+        console.log(nodos_hijos);
 
-                var nodos_hijos = li_superior.childNodes;
-                console.log(nodos_hijos);
+        var lis_longitud = document.getElementById(li_superior_id).childElementCount;
+        console.log(lis_longitud);
 
-                /*console.log(li_superior.removeChild(li_superior.childNodes[2]));
- *  *                 console.log(li_superior.removeChild(li_superior.childNodes[1]));*/
+        var cantidad = lis_longitud - 1;// En la cantidad esta incluido el enlace por eso es -1
 
-                var lis_longitud = document.getElementById(li_superior_id).childElementCount;
-                console.log(lis_longitud);
-
-                var cantidad = lis_longitud - 1;// En la cantidad esta incluido el enlace por eso es -1
-
-                for (var i=cantidad ; i>0; i--){
-                        li_superior.removeChild(nodos_hijos[i]);
-                        console.log('eliminado '+i);
-                        link.removeEventListener("click", cerrarMenu, false); //<=========REMUEVE esto
-                        li_superior.removeEventListener("click", alerta, false);
-                        link.addEventListener("click", crearSubCarpetas, false); // <===== AGREGO esto
-                        li.addEventListener("click", alerta, false);
-                }
-
-                /********************************************
- *  *                 var longitud = ul_eliminar.length;// Si tiene 2 ul (submenu) elimina el primero
- *   *                                 for (var i=0; i < longitud; i++){
- *    *                                                         li_superior.removeChild(ul_eliminar[i]);
- *     *                                                                                 console.log('eliminado '+i);
- *      *                                                                                                 }
- *       *                                                                                                                 *************************************************/
-                console.log('Se cambió el comportamiento');
-                /*link.removeEventListener("click", cerrarMenu, false);
- *  *                 li_superior.removeEventListener("click", alerta, false);
- *   *                                 link.addEventListener("click", crearSubCarpetas, false);
- *    *                                                 li_superior.addEventListener("click", alerta, false);*/
-        }
+        for (var i=cantidad ; i>0; i--){
+        	li_superior.removeChild(nodos_hijos[i]);
+                console.log('eliminado '+i);
+                link.removeEventListener("click", cerrarMenu, false); //<=========REMUEVE esto
+                li_superior.removeEventListener("click", alerta, false);
+                link.addEventListener("click", crearSubCarpetas, false); // <===== AGREGO esto
+                li.addEventListener("click", alerta, false);
+	}
+        console.log('Se cambió el comportamiento');
+}
 
 function cerrarMenuNivel4(){
                 console.log('tiene que eliminar los items Nivel4');
@@ -185,10 +166,10 @@ function crearSubCarpetas(){////////////////////////////************************
         if(link_recibe == '1_TA'){
 
         array_nivel3 = [
-		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "name_layer": layer_1101 },
-		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "name_layer": layer_rutas_provinciales },
-		{"id":3, "name":"Caminos Rurales", "cod":"TA_4_CR", "subcarpeta":"no", "name_layer": layer_caminos_rurales },
-		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_3_LF", "subcarpeta":"no", "name_layer": layer_red_ferrocarril },
+		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "work":"observ", "name_layer": layer_1101 },
+		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "work":"observ", "name_layer": layer_rutas_provinciales },
+		{"id":3, "name":"Caminos Rurales", "cod":"TA_4_CR", "subcarpeta":"no", "work":"c_rurales_6", "name_layer": layer_caminos_rurales },
+		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_3_LF", "subcarpeta":"no", "work":"observ", "name_layer": layer_red_ferrocarril },
                 /*{"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
                 {"id":2, "name":"Red Vial Provincial", "cod":"RVP"},
                 {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}*/];
@@ -196,7 +177,7 @@ function crearSubCarpetas(){////////////////////////////************************
         } else if(link_recibe == '2_TF'){
 
         array_nivel3 = [
-		{"id":1, "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "name_layer": layer_zonas_frutih },
+		{"id":1, "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "work":"observ", "name_layer": layer_zonas_frutih },
 		{"id":2, "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "name_layer": comedoresVectorial },
                 /*{"id":1, "name":"Red Ferroviaria Nacional", "cod":"RFN"},
                 {"id":2, "name":"Red Subterraneos", "cod":"RS"},
@@ -273,31 +254,30 @@ function crearSubCarpetas(){////////////////////////////************************
 		link.appendChild(text);
 
 		if (subC=='si'){
-                                li_insert_in =document.getElementById(link_select_id).parentNode;
-                                console.log(li_insert_in);
+			li_insert_in =document.getElementById(link_select_id).parentNode;
+                        console.log(li_insert_in);
 
-                                li_insert_in.appendChild(ul5);
-                                ul5.appendChild(li);
-                                li.appendChild(link);
-                                link.appendChild(text);
-				link.addEventListener("click", crearCapasNivel4, false);
-                        }
-                        if (subC=='no'){
-                                ul.appendChild(li);
-                                li.appendChild(link);
-				//li.appendChild(imagen_ver);
-				//li.appendChild(link_2);
-                                link.appendChild(text);
-				//link_2.appendChild(text_2);
-                                link.addEventListener("click", cargarCapas1, false);
-                        }
+                        li_insert_in.appendChild(ul5);
+                        ul5.appendChild(li);
+                        li.appendChild(link);
+                        link.appendChild(text);
+			link.addEventListener("click", crearCapasNivel4, false);
+		}
+                if (subC=='no'){
+                	ul.appendChild(li);
+                        li.appendChild(link);
+			//li.appendChild(imagen_ver);
+			//li.appendChild(link_2);
+                        link.appendChild(text);
+			//link_2.appendChild(text_2);
+                        link.addEventListener("click", cargarCapas1, false);
+		}
 
                 //link.addEventListener("click", crearCapasNivel4, false);//crearCapasNivel4//function() {crearCapasNivel4(this.id)}
         }//cierra el for
         link_n2.removeEventListener("click", crearSubCarpetas, false);
         link_n2.addEventListener("click", cerrarMenu, false);
 	//li.addEventListener("click", alerta, false);
-
 }
 
 function mostrarDiv(){
@@ -387,6 +367,7 @@ function crearCapasNivel4(){
 		link_n4.removeEventListener("click", crearCapasNivel4, false);
                 link_n4.addEventListener("click", cerrarMenuNivel4, false);
 }
+
 function cargarCapas1(){
 	var link_id = this.id;
 	console.log(this);
@@ -419,7 +400,7 @@ function removeCapas1(){
 	var link_id = this.id;
 	console.log(this);
 	console.log('remover capa');
-
+	
 	this.removeChild(this.childNodes[1]);
 	
 	if (link_id == 'TA_1_RA') {
