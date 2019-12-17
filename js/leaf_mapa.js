@@ -479,7 +479,9 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 			}
 
 			var popup = new L.Popup({
-            			maxWidth: 300
+            			maxWidth: 300,
+				maxHeight: 500,
+				autoPan: true
          		});
 			popup.setContent(html);
 			popup.setLatLng(clickedLatLng);
