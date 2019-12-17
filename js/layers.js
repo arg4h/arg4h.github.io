@@ -1,41 +1,41 @@
 
-wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/observ/wms?', { 
-  layers: '_3.2.3.1.subte_red_usig_ont_a_view',
+wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/wms?', { 
+  layers: 'observ:_3.2.3.1.subte_red_usig_ont_a_view',
   crs: L.CRS.EPSG4326,
   format: 'image/png',
   transparent: true
 });
 
-layer_1101 = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
-        layers: '_3.4.1.1.6.rutas_nacionales_dnv18.view',
+layer_1101 = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+        layers: 'observ:_3.4.1.1.6.rutas_nacionales_dnv18.view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
         transparent: true
 });
 
-layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
-        layers: '_3.4.1.7.red_vial_ign_ont_a_prov_view',
+layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+        layers: 'observ:_3.4.1.7.red_vial_ign_ont_a_prov_view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
         transparent: true
 });
 
-layer_caminos_rurales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/c_rurales_6/wms?', {
-        layers: 'caminos_rurales.view',
+layer_caminos_rurales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+        layers: 'c_rurales_6:caminos_rurales.view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
         transparent: true
 });
 
-layer_red_ferrocarril = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
-        layers: '_3.4.2.2.5.red_adif_20.11.2018.view',
+layer_red_ferrocarril = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+        layers: 'observ:_3.4.2.2.5.red_adif_20.11.2018.view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
         transparent: true
 });
 
-layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/observ/wms?', {
-        layers: 'zonas_horticolas_view',
+layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+        layers: 'observ:zonas_horticolas_view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
         transparent: true
