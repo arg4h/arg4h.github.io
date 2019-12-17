@@ -2,8 +2,6 @@ var zoom = false;
 var drawControl_Existe = false;
 var BING_KEY = 'AtfyQFLwAqMac5Le45E3ZNuHoolIPOnbS5lneKbIaWJI60e9cBfcvxZeBKjU-tH2';
 
-
-
 /*console.log(concatenar);
 var palabra = "token ";
 
@@ -12,10 +10,10 @@ var Auth = "Auth";*/
 
 //Window.map = new L.Map('map');
 var map = L.map( 'map', {
-    center: [-38.0, -68.0],
-    //crs: L.CRS.EPSG4326,
-    minZoom: 2,
-    zoom: 4
+	center: [-38.0, -68.0],
+    	//crs: L.CRS.EPSG4326,
+    	minZoom: 2,
+    	zoom: 4
 });
 
 L.easyPrint({
@@ -431,8 +429,8 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
         	SERVICE: 'WMS',
         	VERSION: '1.1.1',
         	REQUEST: 'GetFeatureInfo',
-		LAYERS: 'observ:zonas_horticolas_view',
-		QUERY_LAYERS: 'observ:zonas_horticolas_view',
+		LAYERS: layers,
+		QUERY_LAYERS: layers,
 		STYLE: '',
 		BBOX: BBOX,
 		FEATURE_COUNT:5,
