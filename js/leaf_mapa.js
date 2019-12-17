@@ -232,9 +232,9 @@ map.on('draw:created', function (e) {
         });*/
 
 var baseMaps = {
-    	"<span style='color: gray'>OpenStreetMap</span>": OSM,
 	"<span style='color: gray'>Carto</span>": CartoDB_DarkMatter,
-	"<span style='color: gray'>Bing</span>": bingLayer
+	"<span style='color: gray'>Bing</span>": bingLayer,
+	"<span style='color: gray'>OpenStreetMap</span>": OSM
     //treets": streets
 };
 
@@ -243,7 +243,7 @@ var overlayMaps = {
     //"Geojson": pointG
 };
 
-L.control.layers(baseMaps, overlayMaps).addTo(map);
+L.control.layers(baseMaps).addTo(map);
 
 
 //******************************************
