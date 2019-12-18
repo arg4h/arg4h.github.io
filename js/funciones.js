@@ -80,7 +80,7 @@ function creaDivs(){
                 link.appendChild(text);
 
                 link.addEventListener("click", crearSubCarpetas, false); //function() {crearSubCarpetas(this.id), false}
-                li.addEventListener("click", alerta, false);
+                //li.addEventListener("click", alerta, false);
         }// cierra FOR arraySegundoNivel
 
 	}
@@ -124,9 +124,9 @@ function cerrarMenu(){
         	li_superior.removeChild(nodos_hijos[i]);
                 console.log('eliminado '+i);
                 link.removeEventListener("click", cerrarMenu, false); //<=========REMUEVE esto
-                li_superior.removeEventListener("click", alerta, false);
+                //li_superior.removeEventListener("click", alerta, false);
                 link.addEventListener("click", crearSubCarpetas, false); // <===== AGREGO esto
-                li.addEventListener("click", alerta, false);
+                //li.addEventListener("click", alerta, false);
 	}
         console.log('Se cambió el comportamiento');
 }
@@ -168,8 +168,9 @@ function crearSubCarpetas(){////////////////////////////************************
         array_nivel3 = [
 		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "work":"observ", "name_layer": layer_1101 },
 		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "work":"observ", "name_layer": layer_rutas_provinciales },
-		{"id":3, "name":"Caminos Rurales", "cod":"TA_4_CR", "subcarpeta":"no", "work":"c_rurales_6", "name_layer": layer_caminos_rurales },
-		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_3_LF", "subcarpeta":"no", "work":"observ", "name_layer": layer_red_ferrocarril },
+		{"id":3, "name":"Caminos Rurales", "cod":"TA_3_CR", "subcarpeta":"no", "work":"c_rurales_6", "name_layer": layer_caminos_rurales },
+		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_4_LF", "subcarpeta":"no", "work":"observ", "name_layer": layer_red_ferrocarril },
+		{"id":5, "name":"Area Urbana", "cod":"TA_5_AU", "subcarpeta":"no", "visible":"si","layer":"c_rurales_6:idera_planta_urbana_view", "name_layer": layer_area_urbana },
                 /*{"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
                 {"id":2, "name":"Red Vial Provincial", "cod":"RVP"},
                 {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}*/];
@@ -222,8 +223,10 @@ function crearSubCarpetas(){////////////////////////////************************
                 var cod = array_nivel3[i].cod;
                 var li_id ="nivel3_li_"+id+"_"+cod;
 		var subC = array_nivel3[i].subcarpeta;
+		var layer = array_nivel3[i].layer;
+		console.log(layer);
                 if (subC=='no'){
-                	var name_layer = array_nivel3[i].name_layer;
+                	var name = array_nivel3[i].name;
                 }
                 if(subC=='si'){
                 	var ul4 = document.createElement("UL");
@@ -271,13 +274,13 @@ function crearSubCarpetas(){////////////////////////////************************
                         link.appendChild(text);
 			//link_2.appendChild(text_2);
                         link.addEventListener("click", cargarCapas1, false);
+			//link.addEventListener("click", function (){cargarCapas1(name, layer)}, false);// por ahora no enviar con parametros
 		}
 
                 //link.addEventListener("click", crearCapasNivel4, false);//crearCapasNivel4//function() {crearCapasNivel4(this.id)}
         }//cierra el for
         link_n2.removeEventListener("click", crearSubCarpetas, false);
         link_n2.addEventListener("click", cerrarMenu, false);
-	//li.addEventListener("click", alerta, false);
 }
 
 function mostrarDiv(){
@@ -368,19 +371,23 @@ function crearCapasNivel4(){
                 link_n4.addEventListener("click", cerrarMenuNivel4, false);
 }
 
+//function cargarCapas1(name, layeir){
 function cargarCapas1(){
-	var link_id = this.id;
-	console.log(this);
+	console.log(event);
+	var target = event.target
+	var link_id = target.id;
+	console.log(target);
+	//console.log(this.name);
+	//console.log(layer);
+	//console.log(this.visible);
 
 	var imagen_ver = document.createElement("I");
         imagen_ver.className = "fa fa-eye = 2x Larger";
 
-	this.appendChild(imagen_ver);
-	
-	//loadCapas(link_id);// <=====Llamar
+	target.appendChild(imagen_ver);
 
 	if (link_id == 'TA_1_RA') {
-		layer_1101.addTo(map);layer_1101.bringToFront();this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+		layer_1101.addTo(map);layer_1101.bringToFront();
 	} else if (link_id == 'TA_2_RP'){
 		layer_rutas_provinciales.addTo(map);layer_rutas_provinciales.bringToFront();
 	} else if (link_id == 'TA_3_LF'){
@@ -389,19 +396,39 @@ function cargarCapas1(){
                 layer_caminos_rurales.addTo(map);layer_caminos_rurales.bringToFront();
 	} else if (link_id == 'AH_1_FH'){
 		layer_zonas_frutih.addTo(map);layer_zonas_frutih.bringToFront();
+	} else if (link_id == 'TA_5_AU'){
+		layer_area_urbana.addTo(map);layer_area_urbana.bringToFront();
 	} else if(link_id =='AH_2_CC'){
 		loadComedores();
 	}
 
-	this.removeEventListener("click",cargarCapas1, false);this.addEventListener("click", removeCapas1, false);
+	//****Probar eliminar el link y agregar nuevamente. Por ahora NO, ver como pasar los parametros que corresponden
+	/*link_padre =document.getElementById(link_id).parentNode;// obtener la lista dosnde se debe agregar el link
+	
+	link_padre.removeChild(target);
+        var nuevo_link = document.createElement("A");
+	nuevo_link.href = "#";
+	nuevo_link.setAttribute("id", "agregar1");
+	var text = document.createTextNode(name);
+	
+	link_padre.appendChild(nuevo_link);
+	nuevo_link.appendChild(text);*/
+
+	target.removeEventListener("click", cargarCapas1, false);target.addEventListener("click", removeCapas1, false);
 }
 
 function removeCapas1(){
-	var link_id = this.id;
-	console.log(this);
-	console.log('remover capa');
+	var target = event.target;
 	
-	this.removeChild(this.childNodes[1]);
+	var link_id = target.id;
+	console.log(target);
+	console.log('remover capa');
+
+	var imagen_eliminar = target.childNodes[1];
+	console.log(imagen_eliminar);
+	
+	target.removeChild(imagen_eliminar);
+	console.log(target);
 	
 	if (link_id == 'TA_1_RA') {
 		map.removeLayer(layer_1101);
@@ -417,7 +444,8 @@ function removeCapas1(){
 		map.removeLayer(comedoresVectorial);
 	}
 
-	this.removeEventListener("click", removeCapas1, false);this.addEventListener("click", cargarCapas1, false);
+	//target.removeEventListener("click", removeCapas1, false);target.addEventListener("click", function() {cargarCapas1(layer)}, false);
+	target.removeEventListener("click", removeCapas1, false);target.addEventListener("click", cargarCapas1, false);
 }
 /*function loadCapas(id){
 	//

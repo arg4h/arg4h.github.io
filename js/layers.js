@@ -41,6 +41,19 @@ layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wm
         transparent: true
 });
 
+layer_area_urbana = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	layers: 'c_rurales_6:idera_planta_urbana_view',
+	crs: L.CRS.EPSG4326,
+	format: 'image/png',
+	transparent: true
+});
+
+layer_centro_educ = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	layers: 'observ:centros_educativos_hab_view',
+        crs: L.CRS.EPSG4326,
+        format: 'image/png',
+        transparent: true
+});
 //********************************ABRE
 var ccrrVectorial;
 var comedoresVectorial;
