@@ -180,6 +180,7 @@ function crearSubCarpetas(){////////////////////////////************************
         array_nivel3 = [
 		{"id":1, "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "work":"observ", "name_layer": layer_zonas_frutih },
 		{"id":2, "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "name_layer": comedoresVectorial },
+		{"id":3, "name":"Centros Educativos", "cod":"AH_3_CE", "subcarpeta":"no", "work":"observ", "name_layer": layer_centro_educ },
                 /*{"id":1, "name":"Red Ferroviaria Nacional", "cod":"RFN"},
                 {"id":2, "name":"Red Subterraneos", "cod":"RS"},
                 {"id":3, "name":"Servicio de Pasajeros", "cod":"SP"}*/
@@ -400,7 +401,9 @@ function cargarCapas1(){
 		layer_area_urbana.addTo(map);layer_area_urbana.bringToFront();
 	} else if(link_id =='AH_2_CC'){
 		loadComedores();
-	}
+	} else if (link_id =='AH_3_CE'){
+		layer_centro_educ.addTo(map);layer_centro_educ.bringToFront();
+	};
 
 	//****Probar eliminar el link y agregar nuevamente. Por ahora NO, ver como pasar los parametros que corresponden
 	/*link_padre =document.getElementById(link_id).parentNode;// obtener la lista dosnde se debe agregar el link
@@ -438,10 +441,14 @@ function removeCapas1(){
 		 map.removeLayer(layer_red_ferrocarril);
 	} else if(link_id =='TA_4_CR'){
                 map.removeLayer(layer_caminos_rurales);
+	} else if (link_id == 'TA_5_AU'){
+		map.removeLayer(layer_area_urbana);
 	} else if (link_id == 'AH_1_FH'){
 		map.removeLayer(layer_zonas_frutih);
 	} else if(link_id =='AH_2_CC'){
 		map.removeLayer(comedoresVectorial);
+	} else if (link_id =='AH_3_CE'){
+		map.removeLayer(layer_centro_educ);
 	}
 
 	//target.removeEventListener("click", removeCapas1, false);target.addEventListener("click", function() {cargarCapas1(layer)}, false);
