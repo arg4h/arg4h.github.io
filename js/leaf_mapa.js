@@ -3,6 +3,7 @@ var drawControl_Existe = false;
 var BING_KEY = 'AtfyQFLwAqMac5Le45E3ZNuHoolIPOnbS5lneKbIaWJI60e9cBfcvxZeBKjU-tH2';
 
 var countLayers = 1;
+buttonInfo_activo = false;
 
 /*console.log(concatenar);
 var palabra = "token ";
@@ -385,6 +386,9 @@ var clickedLatLng = {lat: null, lng: null};
 //divInfo.addEventListener("click", info_wms, false);
 
 function info_wms(){
+
+//buttonInfo_activo= true;
+console.log('Activar Info');
 map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 
 if( countLayers > 0){
@@ -488,4 +492,5 @@ if( countLayers > 0){
         xhr.send();
 }//cierra if countLayers
 });//cierra map on click
+
 } //cierra function info_wms

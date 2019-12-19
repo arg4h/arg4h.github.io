@@ -18,7 +18,12 @@ function creaDivs(){
 		divButton_Info.id = 'floatingInfo';
 		//divButton_Info
 		mapa.appendChild(divButton_Info);
-		divButton_Info.addEventListener("click", info_wms, false);
+
+		//if(buttonInfo_activo==false){
+			divButton_Info.addEventListener("click", info_wms, false);
+		//} else if (buttonInfo_activo==true){
+			//divButton_Info.removeEventListener("click", info_wms, false);
+		//}
 
 		var linkVisible = document.createElement("A");
 		linkVisible.href = "#";
