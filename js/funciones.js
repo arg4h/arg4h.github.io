@@ -158,20 +158,27 @@ function cerrarMenuNivel4(){
 
 function crearSubCarpetas(){////////////////////////////**************************************************
         var link_recibe = this.id;
-        console.log("recibo codigo "+link_recibe);
+        console.log("recibo codigo nivel 2"+link_recibe);
         var link_n2 = document.getElementById(link_recibe);
 
-        if(link_recibe == '1_TA'){
+	for (var i=0; i<Object.keys(array_nivel3).length; i++){
+		var id_nivel2 = array_nivel3[i].id_n2;
+
+		if (link_recibe == id_nivel2){
+			console.log("Recorrer array con el FOR");
+		//}
+
+	//} //cierra FOR 
+
+        /*if(link_recibe == '1_TA'){
 
         array_nivel3 = [
 		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "work":"observ", "name_layer": layer_1101 },
 		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "work":"observ", "name_layer": layer_rutas_provinciales },
 		{"id":3, "name":"Caminos Rurales", "cod":"TA_3_CR", "subcarpeta":"no", "work":"c_rurales_6", "name_layer": layer_caminos_rurales },
 		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_4_LF", "subcarpeta":"no", "work":"observ", "name_layer": layer_red_ferrocarril },
-		{"id":5, "name":"Area Urbana", "cod":"TA_5_AU", "subcarpeta":"no", "visible":"si","layer":"c_rurales_6:idera_planta_urbana_view", "name_layer": layer_area_urbana },
-                /*{"id":1, "name":"Red Vial Nacional", "cod":"RVN"},
-                {"id":2, "name":"Red Vial Provincial", "cod":"RVP"},
-                {"id":3, "name":"Red Vial Comunal", "cod":"RVC"}*/];
+		{"id":5, "name":"Area Urbana", "cod":"TA_5_AU", "subcarpeta":"no", "visible":"si","layer":"c_rurales_6:idera_planta_urbana_view", "name_layer": layer_area_urbana }
+	]
 
         } else if(link_recibe == '2_TF'){
 
@@ -179,9 +186,6 @@ function crearSubCarpetas(){////////////////////////////************************
 		{"id":1, "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "work":"observ", "name_layer": layer_zonas_frutih },
 		{"id":2, "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "name_layer": comedoresVectorial },
 		{"id":3, "name":"Centros Educativos", "cod":"AH_3_CE", "subcarpeta":"no", "work":"observ", "name_layer": layer_centro_educ },
-                /*{"id":1, "name":"Red Ferroviaria Nacional", "cod":"RFN"},
-                {"id":2, "name":"Red Subterraneos", "cod":"RS"},
-                {"id":3, "name":"Servicio de Pasajeros", "cod":"SP"}*/
                 ];
 
         } else if(link_recibe == '3_TFM'){
@@ -215,7 +219,7 @@ function crearSubCarpetas(){////////////////////////////************************
                 ];
 
         }
-        for (var i=0; i<Object.keys(array_nivel3).length; i++){
+        for (var i=0; i<Object.keys(array_nivel3).length; i++){*/
 
                 var id = array_nivel3[i].id;
                 var name = array_nivel3[i].name;
@@ -229,13 +233,14 @@ function crearSubCarpetas(){////////////////////////////************************
                 }
                 if(subC=='si'){
                 	var ul4 = document.createElement("UL");
-                	ul5.setAttribute("id", "nivel4_"+id+"_"+cod);
+                	ul4.setAttribute("id", "nivel4_"+id+"_"+cod);
                 }
 
                 var ul = document.createElement("UL");
                 ul.setAttribute("id", "nivel3_"+id+"_"+cod);
                 var li= document.createElement("Li");
                 li.setAttribute("id", li_id);
+		li.className = "menu";
                 var link = document.createElement("A");
 
 		var link_2 = document.createElement("A");
@@ -256,11 +261,12 @@ function crearSubCarpetas(){////////////////////////////************************
 		link.appendChild(text);
 
 		if (subC=='si'){
-			li_insert_in =document.getElementById(link_select_id).parentNode;
+			li_insert_in =document.getElementById(link_recibe).parentNode;
                         console.log(li_insert_in);
+			console.log('El nuevo li_insert_in');
 
-                        li_insert_in.appendChild(ul5);
-                        ul5.appendChild(li);
+                        li_insert_in.appendChild(ul4);
+                        ul4.appendChild(li);
                         li.appendChild(link);
                         link.appendChild(text);
 			link.addEventListener("click", crearCapasNivel4, false);
@@ -276,9 +282,11 @@ function crearSubCarpetas(){////////////////////////////************************
 			//link.addEventListener("click", function (){cargarCapas1(name, layer)}, false);// por ahora no enviar con parametros
 		}
 
+		} //cierra el if (link_recibe == id_nivel2)
                 //link.addEventListener("click", crearCapasNivel4, false);//crearCapasNivel4//function() {crearCapasNivel4(this.id)}
         }//cierra el for
         link_n2.removeEventListener("click", crearSubCarpetas, false);
+
         link_n2.addEventListener("click", cerrarMenu, false);
 }
 
@@ -299,7 +307,7 @@ function crearCapasNivel4(){
                 console.log(link_select_id);
                 var link_n4 = document.getElementById(link_select_id);
 
-                if(link_select_id == 'RVN'){
+                if(link_select_id == 'TFM_1_A'){
                         array_nivel4 = [
                                 {"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "name_layer": layer_1101 },
                                 {"id":2, "name":"Peajes en RN", "cod":"TA_1_PRN", "subcarpeta":"no"},
@@ -342,6 +350,7 @@ function crearCapasNivel4(){
                 	var li= document.createElement("Li");
                 	var li_id ="nivel5_li_"+id+"_"+cod;
                 	li.setAttribute("id", li_id);
+			li.className = "menu";
                 	var link = document.createElement("A");
                 	link.setAttribute("id", cod);
 
@@ -365,7 +374,7 @@ function crearCapasNivel4(){
 			}
                 	//link.addEventListener("click", crearCapasNivel4, false);
 
-                }
+                }//cierra FOR
 		link_n4.removeEventListener("click", crearCapasNivel4, false);
                 link_n4.addEventListener("click", cerrarMenuNivel4, false);
 }
@@ -376,16 +385,26 @@ function cargarCapas1(){
 	var target = event.target
 	var link_id = target.id;
 	console.log(target);
-	//console.log(this.name);
-	//console.log(layer);
-	//console.log(this.visible);
 
 	var imagen_ver = document.createElement("I");
         imagen_ver.className = "fa fa-eye = 2x Larger";
 
 	target.appendChild(imagen_ver);
 
-	if (link_id == 'TA_1_RA') {
+	for (var i=0; i<Object.keys(array_nivel3).length; i++){
+		var id_nivel3 = array_nivel3[i].cod;
+		var nombre_layer = array_nivel3[i].nombre_layer;
+		load_layer = array_nivel3[i].load;
+
+		if (link_id == id_nivel3){
+			//var name_layer = array_nivel3[i].nombre_layer;
+			load_layer.addTo(map); load_layer.bringToFront();
+		
+		}
+
+	} //cierra FOR 
+
+	/*if (link_id == 'TA_1_RA') {
 		layer_1101.addTo(map);layer_1101.bringToFront();
 	} else if (link_id == 'TA_2_RP'){
 		layer_rutas_provinciales.addTo(map);layer_rutas_provinciales.bringToFront();
@@ -401,7 +420,7 @@ function cargarCapas1(){
 		loadComedores();
 	} else if (link_id =='AH_3_CE'){
 		layer_centro_educ.addTo(map);layer_centro_educ.bringToFront();
-	};
+	};*/
 
 	//****Probar eliminar el link y agregar nuevamente. Por ahora NO, ver como pasar los parametros que corresponden
 	/*link_padre =document.getElementById(link_id).parentNode;// obtener la lista dosnde se debe agregar el link
