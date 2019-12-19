@@ -163,63 +163,16 @@ function crearSubCarpetas(){////////////////////////////************************
 
 	for (var i=0; i<Object.keys(array_nivel3).length; i++){
 		var id_nivel2 = array_nivel3[i].id_n2;
+		var cod = array_nivel3[i].cod;
+		var visible = array_nivel3[i].visible;
 
-		if (link_recibe == id_nivel2){
-			console.log("Recorrer array con el FOR");
-		//}
+		if(visible == 'si'){
+			console.log(cod);
+		}
 
-	//} //cierra FOR 
+		if (link_recibe == id_nivel2){//Abro IF
+			console.log("Entro en  el IF");
 
-        /*if(link_recibe == '1_TA'){
-
-        array_nivel3 = [
-		{"id":1, "name":"Rutas Nacionales", "cod":"TA_1_RA", "subcarpeta":"no", "work":"observ", "name_layer": layer_1101 },
-		{"id":2, "name":"Rutas Provinciales", "cod":"TA_2_RP", "subcarpeta":"no", "work":"observ", "name_layer": layer_rutas_provinciales },
-		{"id":3, "name":"Caminos Rurales", "cod":"TA_3_CR", "subcarpeta":"no", "work":"c_rurales_6", "name_layer": layer_caminos_rurales },
-		{"id":4, "name":"Líneas de Ferrocarril", "cod":"TA_4_LF", "subcarpeta":"no", "work":"observ", "name_layer": layer_red_ferrocarril },
-		{"id":5, "name":"Area Urbana", "cod":"TA_5_AU", "subcarpeta":"no", "visible":"si","layer":"c_rurales_6:idera_planta_urbana_view", "name_layer": layer_area_urbana }
-	]
-
-        } else if(link_recibe == '2_TF'){
-
-        array_nivel3 = [
-		{"id":1, "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "work":"observ", "name_layer": layer_zonas_frutih },
-		{"id":2, "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "name_layer": comedoresVectorial },
-		{"id":3, "name":"Centros Educativos", "cod":"AH_3_CE", "subcarpeta":"no", "work":"observ", "name_layer": layer_centro_educ },
-                ];
-
-        } else if(link_recibe == '3_TFM'){
-
-                array_nivel3 = [
-                        {"id":1, "name":"Completar", "cod":"C"}
-                ];
-
-        } else if(link_recibe == '4_TAereo'){
-
-                array_nivel3 = [
-                        {"id":1, "name":"Completar", "cod":"C"}
-                ];
-
-        } else if(link_recibe == '5_EET'){
-
-                array_nivel3 = [
-                        {"id":1, "name":"Completar", "cod":"C"}
-                ];
-
-        } else if(link_recibe == '6_CC'){
-
-                array_nivel3 = [
-                        {"id":1, "name":"Completar", "cod":"C"}
-                ];
-
-        } else {
-
-                array_nivel3 = [
-                        {"id":1, "name":"Completar", "cod":"C"}
-                ];
-
-        }
-        for (var i=0; i<Object.keys(array_nivel3).length; i++){*/
 
                 var id = array_nivel3[i].id;
                 var name = array_nivel3[i].name;
@@ -244,20 +197,16 @@ function crearSubCarpetas(){////////////////////////////************************
                 var link = document.createElement("A");
 
 		var link_2 = document.createElement("A");
-		var imagen_ver = document.createElement("I");
-		imagen_ver.className = "fa fa-eye-slash = 2x Larger";
                 link.href = "#";
                 link.setAttribute("id", cod);
                 var text = document.createTextNode(name);
 		var text_2 = document.createTextNode('+');
 
                 li_insert_in =document.getElementById(link_recibe).parentNode;
-                console.log(li_insert_in);
+
                 li_insert_in.appendChild(ul);
                 ul.appendChild(li);
-                //li.appendChild(link_2);
 		li.appendChild(link);
-                //link_2.appendChild(text_2);
 		link.appendChild(text);
 
 		if (subC=='si'){
@@ -274,15 +223,21 @@ function crearSubCarpetas(){////////////////////////////************************
                 if (subC=='no'){
                 	ul.appendChild(li);
                         li.appendChild(link);
-			//li.appendChild(imagen_ver);
-			//li.appendChild(link_2);
+			
+			if(visible == 'si'){
+                        	console.log(cod);
+				var imagen_ver = document.createElement("I");
+				imagen_ver.className = "fa fa-eye = 2x Larger";
+				li.appendChild(imagen_ver);
+				//li.appendChild(link_2);
+			}
                         link.appendChild(text);
 			//link_2.appendChild(text_2);
                         link.addEventListener("click", cargarCapas1, false);
 			//link.addEventListener("click", function (){cargarCapas1(name, layer)}, false);// por ahora no enviar con parametros
 		}
 
-		} //cierra el if (link_recibe == id_nivel2)
+		} //cierra el if (link_recibe == id_nivel2) **************************************
                 //link.addEventListener("click", crearCapasNivel4, false);//crearCapasNivel4//function() {crearCapasNivel4(this.id)}
         }//cierra el for
         link_n2.removeEventListener("click", crearSubCarpetas, false);
@@ -386,18 +341,32 @@ function cargarCapas1(){
 	var link_id = target.id;
 	console.log(target);
 
-	var imagen_ver = document.createElement("I");
-        imagen_ver.className = "fa fa-eye = 2x Larger";
-
-	target.appendChild(imagen_ver);
-
 	for (var i=0; i<Object.keys(array_nivel3).length; i++){
 		var id_nivel3 = array_nivel3[i].cod;
 		var nombre_layer = array_nivel3[i].nombre_layer;
 		load_layer = array_nivel3[i].load;
 
 		if (link_id == id_nivel3){
-			load_layer.addTo(map); load_layer.bringToFront();
+
+			var li_padre = document.getElementById(link_id).parentNode;
+
+			load_layer.addTo(map); load_layer.bringToFront(); //agrego la capa
+			var visible = array_nivel3[i].visible;
+			console.log(visible);
+
+			if (visible == 'si'){
+				if( countLayers == 1){
+				removeCapas1();
+				countLayers = 0;
+				}
+				//array_nivel3[i].visible = 'no';
+				//console.log(array_nivel3[i]);
+			} else {
+				var imagen_ver = document.createElement("I");
+				imagen_ver.className = "fa fa-eye = 2x Larger";
+				li_padre.appendChild(imagen_ver);
+				array_nivel3[i].visible = 'si';
+			}
 		}
 	} //cierra FOR 
 
@@ -418,13 +387,13 @@ function cargarCapas1(){
 
 function removeCapas1(){
 	var target = event.target;
-	
 	var link_id = target.id;
-	console.log('remover capa');
 
-	var imagen_eliminar = target.childNodes[1];
+	var li_padre = document.getElementById(link_id).parentNode;
+
+	var imagen_eliminar = li_padre.childNodes[1];
 	
-	target.removeChild(imagen_eliminar);
+	li_padre.removeChild(imagen_eliminar);
 	
 	for (var i=0; i<Object.keys(array_nivel3).length; i++){
                 var id_nivel3 = array_nivel3[i].cod;
@@ -433,6 +402,12 @@ function removeCapas1(){
 
                 if (link_id == id_nivel3){
                         map.removeLayer(remove_layer);
+
+			var visible = array_nivel3[i].visible;
+
+			if (visible == 'si'){
+				array_nivel3[i].visible = 'no';			
+			}
                 }
         } //cierra FOR
 

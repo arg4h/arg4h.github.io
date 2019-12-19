@@ -6,6 +6,12 @@ wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/wms?', {
   transparent: true
 });
 
+/*layer_ICV = L.tileLayer('https://icv.conicet.gov.ar/tileserver-php/icv/%7Bz%7D/%7Bx%7D/%7By%7D.pbf/icv/{z}/{x}/{y}.pbf', {
+	tms: true,
+
+});
+layer_ICV.addTo(map);*/
+
 layer_1101 = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
         layers: 'observ:_3.4.1.1.6.rutas_nacionales_dnv18.view',
         crs: L.CRS.EPSG4326,

@@ -2,6 +2,8 @@ var zoom = false;
 var drawControl_Existe = false;
 var BING_KEY = 'AtfyQFLwAqMac5Le45E3ZNuHoolIPOnbS5lneKbIaWJI60e9cBfcvxZeBKjU-tH2';
 
+var countLayers = 1;
+
 /*console.log(concatenar);
 var palabra = "token ";
 
@@ -17,7 +19,7 @@ var map = L.map( 'map', {
 });
 
 L.easyPrint({
-	title: 'Mi botón para imprimir',
+	title: 'Imprimir',
 	position: 'bottomright',
 	elementsToHide: 'p, h2, .leaflet-control-zoom'
 }).addTo(map);
@@ -245,6 +247,8 @@ var overlayMaps = {
 
 L.control.layers(baseMaps).addTo(map);
 
+layer_area_urbana.addTo(map);
+layer_area_urbana.bringToFront();
 
 //******************************************
 //https://www.codeproject.com/Articles/1020023/Editing-Spatial-Data-in-Leaflet
@@ -386,7 +390,8 @@ map.on('zoomend' , function (e) {
 });
 
 //https://www.e-education.psu.edu/geog585/node/765
-var clickedLatLng = {lat: null, lng: null}; 
+var clickedLatLng = {lat: null, lng: null};
+ 
 map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 
 //if(map.hasLayer(this._layers)){
