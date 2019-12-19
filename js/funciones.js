@@ -397,30 +397,9 @@ function cargarCapas1(){
 		load_layer = array_nivel3[i].load;
 
 		if (link_id == id_nivel3){
-			//var name_layer = array_nivel3[i].nombre_layer;
 			load_layer.addTo(map); load_layer.bringToFront();
-		
 		}
-
 	} //cierra FOR 
-
-	/*if (link_id == 'TA_1_RA') {
-		layer_1101.addTo(map);layer_1101.bringToFront();
-	} else if (link_id == 'TA_2_RP'){
-		layer_rutas_provinciales.addTo(map);layer_rutas_provinciales.bringToFront();
-	} else if (link_id == 'TA_3_LF'){
-		layer_red_ferrocarril.addTo(map);layer_red_ferrocarril.bringToFront();
-	} else if(link_id =='TA_4_CR'){
-                layer_caminos_rurales.addTo(map);layer_caminos_rurales.bringToFront();
-	} else if (link_id == 'AH_1_FH'){
-		layer_zonas_frutih.addTo(map);layer_zonas_frutih.bringToFront();
-	} else if (link_id == 'TA_5_AU'){
-		layer_area_urbana.addTo(map);layer_area_urbana.bringToFront();
-	} else if(link_id =='AH_2_CC'){
-		loadComedores();
-	} else if (link_id =='AH_3_CE'){
-		layer_centro_educ.addTo(map);layer_centro_educ.bringToFront();
-	};*/
 
 	//****Probar eliminar el link y agregar nuevamente. Por ahora NO, ver como pasar los parametros que corresponden
 	/*link_padre =document.getElementById(link_id).parentNode;// obtener la lista dosnde se debe agregar el link
@@ -441,32 +420,21 @@ function removeCapas1(){
 	var target = event.target;
 	
 	var link_id = target.id;
-	console.log(target);
 	console.log('remover capa');
 
 	var imagen_eliminar = target.childNodes[1];
-	console.log(imagen_eliminar);
 	
 	target.removeChild(imagen_eliminar);
-	console.log(target);
 	
-	if (link_id == 'TA_1_RA') {
-		map.removeLayer(layer_1101);
-	}else if (link_id == 'TA_2_RP'){
-		map.removeLayer(layer_rutas_provinciales);
-	} else if (link_id == 'TA_3_LF'){
-		 map.removeLayer(layer_red_ferrocarril);
-	} else if(link_id =='TA_4_CR'){
-                map.removeLayer(layer_caminos_rurales);
-	} else if (link_id == 'TA_5_AU'){
-		map.removeLayer(layer_area_urbana);
-	} else if (link_id == 'AH_1_FH'){
-		map.removeLayer(layer_zonas_frutih);
-	} else if(link_id =='AH_2_CC'){
-		map.removeLayer(comedoresVectorial);
-	} else if (link_id =='AH_3_CE'){
-		map.removeLayer(layer_centro_educ);
-	}
+	for (var i=0; i<Object.keys(array_nivel3).length; i++){
+                var id_nivel3 = array_nivel3[i].cod;
+                var nombre_layer = array_nivel3[i].nombre_layer;
+                remove_layer = array_nivel3[i].load;
+
+                if (link_id == id_nivel3){
+                        map.removeLayer(remove_layer);
+                }
+        } //cierra FOR
 
 	//target.removeEventListener("click", removeCapas1, false);target.addEventListener("click", function() {cargarCapas1(layer)}, false);
 	target.removeEventListener("click", removeCapas1, false);target.addEventListener("click", cargarCapas1, false);
