@@ -202,13 +202,6 @@ xhr.onload = function(e) {
 
 xhr.send();*/
 
-/*var GoogleAerial = new L.Google('SATELLITE');
-var GoogleRoad = new L.Google('ROADMAP');
-var GoogleTerrain = new L.Google('TERRAIN');
-var GoogleHybrid = new L.Google('HYBRID');
-
-GoogleAerial.addTo(map);*/
-
 var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
@@ -220,10 +213,6 @@ var bingLayer = L.tileLayer.bing(BING_KEY).addTo(map);
 var OSM = L.tileLayer( 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'OpenStreetMap'
 }).addTo(map);
-
-
-/*var wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/observ/wms?', {  
-console.log(layer_1101);*/
 
 /*map.addControl(drawControl);
 
@@ -237,7 +226,6 @@ var baseMaps = {
 	"<span style='color: gray'>Carto</span>": CartoDB_DarkMatter,
 	"<span style='color: gray'>Bing</span>": bingLayer,
 	"<span style='color: gray'>OpenStreetMap</span>": OSM
-    //treets": streets
 };
 
 var overlayMaps = {
@@ -391,10 +379,15 @@ map.on('zoomend' , function (e) {
 
 //https://www.e-education.psu.edu/geog585/node/765
 var clickedLatLng = {lat: null, lng: null};
- 
+
+//******PENDIENTE info solo al activar
+//var divInfo = document.getElementById( floatingInfo);
+//divInfo.addEventListener("click", info_wms, false);
+
+function info_wms(){
 map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 
-//if(map.hasLayer(this._layers)){
+if( countLayers > 0){
 	var pixelPosition = e.layerPoint;
 	var _layers = this._layers,
       	layers = [],
@@ -447,7 +440,6 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 		X: X,
 		Y: Y
 	};	
-	//var URL = 'https://ide.transporte.gob.ar/geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=observ:zonas_horticolas_view&QUERY_LAYERS=observ:zonas_horticolas_view&STYLES=&BBOX='+BBOX+'&FEATURE_COUNT=5&HEIGHT='+HEIGHT+'&WIDTH='+WIDTH+'&FORMAT=image%2Fpng&INFO_FORMAT=text%2Fhtml&SRS=EPSG%3A4326&X='+X+'&Y='+Y;
 
 	var parameters = L.Util.extend(defaultParameters);
 
@@ -494,5 +486,6 @@ map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 		}
         }
         xhr.send();
-//}//cierra hasLayer
+}//cierra if countLayers
 });//cierra map on click
+} //cierra function info_wms

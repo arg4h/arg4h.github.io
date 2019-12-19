@@ -14,6 +14,12 @@ function creaDivs(){
 		divMostrar.addEventListener("click", mostrarDiv, false);
                 mapa.appendChild(divMostrar);
 
+		var divButton_Info = document.createElement('div');
+		divButton_Info.id = 'floatingInfo';
+		//divButton_Info
+		mapa.appendChild(divButton_Info);
+		divButton_Info.addEventListener("click", info_wms, false);
+
 		var linkVisible = document.createElement("A");
 		linkVisible.href = "#";
 		linkVisible.className = "toggleSettings";
