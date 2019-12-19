@@ -49,8 +49,6 @@ function creaDivs(){
 		listaPrincipal.appendChild(linkPrincipal);
 		linkPrincipal.appendChild(tPrincipal);// IDE Transporte
 
-		/*arraySegundoNivel = [
-        	];*/
 
 	for (var j=0; j<Object.keys(arraySegundoNivel).length; j++){
 
