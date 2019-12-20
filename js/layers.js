@@ -355,7 +355,7 @@ xhrC.send();
         }
       );
     }
-/* POR ahora quitar llamada directa desde github 20-12-2019
+/* POR ahora quitar llamada directa desde Github 20-12-2019
 var urlTerremotos = "https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/barrios_populares.geojson";
 
 peticionAjax(urlTerremotos)
