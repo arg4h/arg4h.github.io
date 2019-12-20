@@ -21,9 +21,11 @@ function creaDivs(){
 
 		//if(buttonInfo_activo==false){
 			divButton_Info.addEventListener("click", info_wms, false);
-		//} else if (buttonInfo_activo==true){
-			//divButton_Info.removeEventListener("click", info_wms, false);
-		//}
+		/*} 
+		else if (buttonInfo_activo==true){
+			divButton_Info.removeEventListener("click", info_wms, false);
+			divButton_Info.addEventListener("click", quitar_info, false);
+		}*/
 
 		var linkVisible = document.createElement("A");
 		linkVisible.href = "#";
@@ -365,7 +367,6 @@ function cargarCapas1(){
 			var llamar_funcion = array_nivel3[i].load;
 			if(vectorial == 'si'){
 				llamar_funcion(); //<==================================agrego la capa llamando a la funcion
-				//array_nivel3[i].nombre_layer = comedoresVectorial;
 			} else {
 				load_layer.addTo(map); load_layer.bringToFront(); //<==================================agrego la capa
 			}

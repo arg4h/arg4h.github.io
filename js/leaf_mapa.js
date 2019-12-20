@@ -381,17 +381,30 @@ map.on('zoomend' , function (e) {
 //https://www.e-education.psu.edu/geog585/node/765
 var clickedLatLng = {lat: null, lng: null};
 
-//******PENDIENTE info solo al activar
-//var divInfo = document.getElementById( floatingInfo);
-//divInfo.addEventListener("click", info_wms, false);
+//******PENDIENTE info: activo / inactivo solo con wms. Ver que pasa con los vectoriales 
+function quitar_info(){
+	
+	buttonInfo_activo= false;
+	var target = event.target;
+	var target_id= target.id;
+
+	document.getElementById(target_id).removeEventListener("click", quitar_info, false);
+	document.getElementById(target_id).addEventListener("click", info_wms, false);
+	
+	map.off('click');
+}
 
 function info_wms(){
 
-//buttonInfo_activo= true;
-console.log('Activar Info');
-map.on('click', function(e) {//https://codepen.io/mmsmdali/pen/LWEpym/
+	buttonInfo_activo= true;
+	var target = event.target;
+	var target_id= target.id;
+	document.getElementById(target_id).removeEventListener("click", info_wms, false);
+	document.getElementById(target_id).addEventListener("click", quitar_info, false);
 
-if( countLayers > 0){
+	map.on('click', function myCallback (e) {//https://codepen.io/mmsmdali/pen/LWEpym/
+
+	if( countLayers > 0){
 	var pixelPosition = e.layerPoint;
 	var _layers = this._layers,
       	layers = [],
@@ -490,7 +503,7 @@ if( countLayers > 0){
 		}
         }
         xhr.send();
-}//cierra if countLayers
-});//cierra map on click
+	}//cierra if countLayers
+	});//cierra map on click
 
 } //cierra function info_wms
