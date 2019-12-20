@@ -60,6 +60,13 @@ layer_centro_educ = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms
         format: 'image/png',
         transparent: true
 });
+
+layer_barrios_renabap  = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	layers: 'observ:barrios_renabap_view',
+	crs: L.CRS.EPSG4326,
+        format: 'image/png',
+        transparent: true
+});
 //********************************ABRE
 var ccrrVectorial;
 var comedoresVectorial;
@@ -348,36 +355,31 @@ xhrC.send();
         }
       );
     }
+/* POR ahora quitar llamada directa desde github 20-12-2019
+var urlTerremotos = "https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/barrios_populares.geojson";
 
-    //var urlTerremotos = 'https://ide.transporte.gob.ar/geoserver/c_rurales_6/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=c_rurales_6%3Acaminos_rurales.view&outputFormat=application%2Fjson';
-    //var urlTerremotos = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
-	var urlTerremotos = "https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/barrios_populares.geojson";
+peticionAjax(urlTerremotos)
+	.then(function(respuesta) {
+		var datos = JSON.parse(respuesta);
+		console.log(datos);
+		var capaVectorial = L.geoJSON(datos, {
+			pointToLayer: function(entidad, latlng) {
+				return L.circleMarker(latlng);
+			}
+		});
 
-	peticionAjax(urlTerremotos)
-      	.then(function (respuesta) {
-        var datos = JSON.parse(respuesta);
-	console.log(datos);
-        var capaVectorial = L.geoJSON(datos, {
-          pointToLayer: function (entidad, latlng) {
-            return L.circleMarker(latlng);
-          }
-        });
+		capaVectorial.bindPopup(function(layer) {
+			console.log(layer.feature);
 
-        capaVectorial.bindPopup(function (layer) {
-		console.log(layer.feature);
-          //var fecha = 'Fecha: ' + new Date(layer.feature.properties.time).toLocaleString();
-          //var magnitud = 'Magnitud: ' + layer.feature.properties.mag;
-          //return '<div>' + fecha + '<br>' + magnitud + '</div>';
-	
-	return 	"<div style='max-width:300px;'><h4><small>ID: " + layer.feature.properties.id_renabap + "</small></h4><h4>" + layer.feature.properties.nombre_bar + "</h4><p>"+layer.feature.properties.departamen+", "+layer.feature.properties.localidad + ", "+ layer.feature.properties.provincia + ".</p></div>";
-        });
+			return "<div style='max-width:300px;'><h4><small>ID: " + layer.feature.properties.id_renabap + "</small></h4><h4>" + layer.feature.properties.nombre_bar + "</h4><p>" + layer.feature.properties.departamen + ", " + layer.feature.properties.localidad + ", " + layer.feature.properties.provincia + ".</p></div>";
+		});
 
-        capaVectorial.addTo(map);
-      })
-      .catch(function (respuesta) {
-	alert("No carga");
-//        alert(respuesta);
-      });
+		capaVectorial.addTo(map);
+	})
+	.catch(function(respuesta) {
+		alert("No carga");
+	});
+*/
 
 ///*******************Nueva function
 //function startEditing(layer) {
