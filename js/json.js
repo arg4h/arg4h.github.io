@@ -16,7 +16,7 @@ array_nivel3 = [
         {"id":5, "id_n2": "1_TA", "name":"Area Urbana", "cod":"TA_5_AU", "subcarpeta":"no", "visible":"si", "nombre_layer": "layer_area_urbana", "load": layer_area_urbana},
 
 	{"id":6, "id_n2": "2_TF", "name":"Zonas Frutihorticolas", "cod":"AH_1_FH", "subcarpeta":"no", "visible":"no", "work":"observ", "nombre_layer": "layer_zonas_frutih", "load": layer_zonas_frutih},
-        {"id":7, "id_n2": "2_TF", "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "visible":"no", "nombre_layer": "comedoresVectorial", "load": comedoresVectorial},
+        {"id":7, "id_n2": "2_TF", "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "visible":"no", "nombre_layer": "comedoresVectorial", "load": loadComedores, "vectorial":"si"},
         {"id":8, "id_n2": "2_TF", "name":"Centros Educativos", "cod":"AH_3_CE", "subcarpeta":"no", "visible":"no", "work":"observ", "nombre_layer": "layer_centro_educ", "load": layer_centro_educ},
 
 	{"id":9, "id_n2": "3_TFM", "name":"Completar", "cod":"TFM_1_A", "subcarpeta":"si"}

@@ -361,9 +361,17 @@ function cargarCapas1(){
 
 			var li_padre = document.getElementById(link_id).parentNode;
 
-			load_layer.addTo(map); load_layer.bringToFront(); //agrego la capa
+			var vectorial = array_nivel3[i].vectorial;
+			var llamar_funcion = array_nivel3[i].load;
+			if(vectorial == 'si'){
+			
+				console.log('tengo que ejecutar');
+				console.log(llamar_funcion);
+				llamar_funcion(); //<==================================agrego la capa llamando a la funcion
+			} else {
+				load_layer.addTo(map); load_layer.bringToFront(); //<==================================agrego la capa
+			}
 			var visible = array_nivel3[i].visible;
-			console.log(visible);
 
 			if (visible == 'si'){
 				if( countLayers == 1){

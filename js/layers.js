@@ -74,6 +74,7 @@ function comedoresStyle(feature) {
   	};
 }
 function loadComedores(){
+	console.log('Llamando esta funcion');
 	var urlComedores = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/comedores_comunitarios.geojson';
 
 	var xhr = new XMLHttpRequest();
@@ -100,13 +101,12 @@ function loadComedores(){
 			onEachFeature: onEachFeature
 		});
 
-		//comedoresVectorial.addTo(map);
-		//comedoresVectorial.bringToFront();
+		comedoresVectorial.addTo(map);
+		comedoresVectorial.bringToFront();
 	}
 	
 
 	xhr.send();
-	return comedoresVectorial
 
 } //cierra loadComedores
 
