@@ -391,8 +391,10 @@ function quitar_info(){
 	document.getElementById(target_id).removeEventListener("click", quitar_info, false);
 	document.getElementById(target_id).addEventListener("click", info_wms, false);
 
-	document.getElementById(target_id).title = 'Activar Info'; //Cambiar tutulo al div cuando está desactivado
-	document.getElementById(target_id).className =  "floatingInfo";
+	/*document.getElementById(target_id).title = 'Activar Info'; //Cambiar tutulo al div cuando está desactivado
+	document.getElementById(target_id).classList.remove('floatingInfo_desactivado');
+	document.getElementById(target_id).classList.add('floatingInfo');*/
+	//document.getElementById(target_id).className =  "floatingInfo";
 	
 	map.off('click');
 }
@@ -405,10 +407,11 @@ function info_wms(){
 	console.log(target_id);
 	document.getElementById(target_id).removeEventListener("click", info_wms, false);
 	document.getElementById(target_id).addEventListener("click", quitar_info, false);
-	document.getElementById(target_id).title = 'Desactivar Info'; //Cambiar tutulo al div
-	document.getElementById(target_id).className =	"floatingInfo_desactivado";
+	/*document.getElementById(target_id).title = 'Desactivar Info'; //Cambiar tutulo al div
+	document.getElementById(target_id).classList.remove('floatingInfo');
+	document.getElementById(target_id).classList.add('floatingInfo_desactivado');*/
 
-	map.on('click', function myCallback (e) {//https://codepen.io/mmsmdali/pen/LWEpym/
+	map.on('click', function (e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 
 	if( countLayers > 0){
 	var pixelPosition = e.layerPoint;
