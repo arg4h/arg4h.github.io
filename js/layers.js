@@ -70,6 +70,7 @@ layer_barrios_renabap  = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserve
 //********************************ABRE
 var ccrrVectorial;
 var comedoresVectorial;
+var feriasfVectorial;
 //var layerP = L.geoJson.pouch("https://90705519-98e2-4acf-b321-1466df6704c8-bluemix.cloudant.com/ccrr").addTo(map);
 //console.log(layerP);
 
@@ -89,7 +90,6 @@ function loadComedores(){
 
 	xhr.onload = function(e) {
 		var data = JSON.parse(this.response);
-        	console.log(data);
 
 		var geojsonMarkerOptions = {
                 	radius: 5,
@@ -121,11 +121,49 @@ function loadComedores(){
 			}
 		}
 	}
-	
 
 	xhr.send();
-	return comedoresVectorial;
+	//return comedoresVectorial;
 } //cierra loadComedores
+
+function loadFeriasF(){
+	var urlFeriasF = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/feriasfrancas.geojson';
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', urlFeriasF);
+
+        xhr.onload = function(e) {
+                var data = JSON.parse(this.response);
+
+                var geojsonMarkerOptions = {
+                        radius: 5,
+                        fillColor: "#ff7800",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.8
+                };
+
+		feriasfVectorial = L.geoJson(data, {
+                	pointToLayer: function (feature, latlng) {
+                        	return L.circleMarker(latlng, geojsonMarkerOptions);
+                	}
+        	}).addTo(map);
+
+                feriasfVectorial.addTo(map);
+                feriasfVectorial.bringToFront();
+
+                for (var i=0; i<Object.keys(array_nivel3).length; i++){
+                        var nombre = array_nivel3[i].name;
+
+                        if (nombre == 'Ferias Francas'){
+                                array_nivel3[i].nombre_layer = feriasfVectorial;
+                        }
+                }
+        }
+
+        xhr.send();
+} //cierra loadFeriasF
 
 function loadGeojson(){
 	var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';

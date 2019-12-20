@@ -19,8 +19,8 @@ array_nivel3 = [
         {"id":7, "id_n2": "2_TF", "name":"Comedores Comunitarios", "cod":"AH_2_CC", "subcarpeta":"no", "visible":"no", "nombre_layer": comedoresVectorial, "load": loadComedores, "vectorial":"si"},
         {"id":8, "id_n2": "2_TF", "name":"Centros Educativos", "cod":"AH_3_CE", "subcarpeta":"no", "visible":"no", "work":"observ", "nombre_layer": "layer_centro_educ", "load": layer_centro_educ},
 	{"id":9, "id_n2": "2_TF", "name":"Barrios RENABAP", "cod":"AH_4_BR", "subcarpeta":"no", "visible":"no", "work":"observ", "nombre_layer": "barrios_renabap_view", "load": layer_barrios_renabap},
-
-	{"id":10, "id_n2": "3_TFM", "name":"Completar", "cod":"TFM_1_A", "subcarpeta":"si"}
+	{"id":10, "id_n2": "2_TF", "name":"Ferias Francas", "cod":"AH_5_FF", "subcarpeta":"no", "visible":"no", "nombre_layer": feriasfVectorial, "load": loadFeriasF, "vectorial":"si"},
+	{"id":11, "id_n2": "3_TFM", "name":"Completar", "cod":"TFM_1_A", "subcarpeta":"si"}
 ];
 
 //NOTA: cuando es vectorial: 'si', en load es la funcion que crea la capa y la agrega al mapa ----- loadComedores.
