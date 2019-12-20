@@ -100,12 +100,13 @@ function loadComedores(){
 			onEachFeature: onEachFeature
 		});
 
-		comedoresVectorial.addTo(map);
-		comedoresVectorial.bringToFront();
+		//comedoresVectorial.addTo(map);
+		//comedoresVectorial.bringToFront();
 	}
 	
 
 	xhr.send();
+	return comedoresVectorial
 
 } //cierra loadComedores
 
