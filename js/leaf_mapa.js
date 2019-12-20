@@ -390,6 +390,9 @@ function quitar_info(){
 
 	document.getElementById(target_id).removeEventListener("click", quitar_info, false);
 	document.getElementById(target_id).addEventListener("click", info_wms, false);
+
+	document.getElementById(target_id).title = 'Activar Info'; //Cambiar tutulo al div cuando está desactivado
+	document.getElementById(target_id).className =  "floatingInfo";
 	
 	map.off('click');
 }
@@ -399,8 +402,11 @@ function info_wms(){
 	buttonInfo_activo= true;
 	var target = event.target;
 	var target_id= target.id;
+	console.log(target_id);
 	document.getElementById(target_id).removeEventListener("click", info_wms, false);
 	document.getElementById(target_id).addEventListener("click", quitar_info, false);
+	document.getElementById(target_id).title = 'Desactivar Info'; //Cambiar tutulo al div
+	document.getElementById(target_id).className =	"floatingInfo_desactivado";
 
 	map.on('click', function myCallback (e) {//https://codepen.io/mmsmdali/pen/LWEpym/
 
