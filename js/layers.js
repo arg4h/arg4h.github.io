@@ -103,11 +103,21 @@ function loadComedores(){
 
 		comedoresVectorial.addTo(map);
 		comedoresVectorial.bringToFront();
+
+		for (var i=0; i<Object.keys(array_nivel3).length; i++){
+			console.log(array_nivel3[i]);
+			var nombre = array_nivel3[i].name;
+
+			if (nombre == 'Comedores Comunitarios'){
+				array_nivel3[i].nombre_layer = comedoresVectorial;
+				console.log(array_nivel3[i]);
+			}
+		}
 	}
 	
 
 	xhr.send();
-
+	return comedoresVectorial;
 } //cierra loadComedores
 
 function loadGeojson(){

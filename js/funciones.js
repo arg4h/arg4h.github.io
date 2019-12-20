@@ -364,20 +364,18 @@ function cargarCapas1(){
 			var vectorial = array_nivel3[i].vectorial;
 			var llamar_funcion = array_nivel3[i].load;
 			if(vectorial == 'si'){
-			
-				console.log('tengo que ejecutar');
-				console.log(llamar_funcion);
 				llamar_funcion(); //<==================================agrego la capa llamando a la funcion
+				//array_nivel3[i].nombre_layer = comedoresVectorial;
 			} else {
 				load_layer.addTo(map); load_layer.bringToFront(); //<==================================agrego la capa
 			}
 			var visible = array_nivel3[i].visible;
 
 			if (visible == 'si'){
-				if( countLayers == 1){
+				/*if( countLayers == 1){
 				removeCapas1();
 				countLayers = 0;
-				}
+				}*/
 				//array_nivel3[i].visible = 'no';
 				//console.log(array_nivel3[i]);
 			} else {
@@ -416,11 +414,22 @@ function removeCapas1(){
 	
 	for (var i=0; i<Object.keys(array_nivel3).length; i++){
                 var id_nivel3 = array_nivel3[i].cod;
+		console.log(id_nivel3);
                 var nombre_layer = array_nivel3[i].nombre_layer;
+		console.log(nombre_layer);
                 remove_layer = array_nivel3[i].load;
 
                 if (link_id == id_nivel3){
-                        map.removeLayer(remove_layer);
+			console.log(array_nivel3[i]);
+			//var name_layer = array_nivel3[i].nombre_layer;
+			var vectorial = array_nivel3[i].vectorial;
+
+			if (vectorial == 'si'){
+				console.log(nombre_layer);
+				map.removeLayer(nombre_layer);
+			} else {
+                        	map.removeLayer(remove_layer);
+			}
 
 			var visible = array_nivel3[i].visible;
 
