@@ -381,18 +381,20 @@ map.on('zoomend' , function (e) {
 //https://www.e-education.psu.edu/geog585/node/765
 var clickedLatLng = {lat: null, lng: null};
 
-//******PENDIENTE info: activo / inactivo solo con wms. Ver que pasa con los vectoriales 
+//******PENDIENTE info: activo / inactivo solo con wms. Ver que pasa con los vectoriales
+// se cambia document.getElementById(target_id) X document.getElementById('floatingInfo') 
 function quitar_info(){
 	
 	buttonInfo_activo= false;
 	var target = event.target;
 	var target_id= target.id;
+	console.log(target_id);
 
-	document.getElementById(target_id).removeEventListener("click", quitar_info, false);
-	document.getElementById(target_id).addEventListener("click", info_wms, false);
+	document.getElementById('floatingInfo').removeEventListener("click", quitar_info, false);
+        document.getElementById('floatingInfo').addEventListener("click", info_wms, false);
 
-	/*document.getElementById(target_id).title = 'Activar Info'; //Cambiar tutulo al div cuando está desactivado
-	document.getElementById(target_id).classList.remove('floatingInfo_desactivado');
+	document.getElementById('floatingInfo').title = 'Activar Info'; //Cambiar tutulo al div cuando está desactivado
+	/*document.getElementById(target_id).classList.remove('floatingInfo_desactivado');
 	document.getElementById(target_id).classList.add('floatingInfo');*/
 	//document.getElementById(target_id).className =  "floatingInfo";
 	
@@ -405,10 +407,10 @@ function info_wms(){
 	var target = event.target;
 	var target_id= target.id;
 	console.log(target_id);
-	document.getElementById(target_id).removeEventListener("click", info_wms, false);
-	document.getElementById(target_id).addEventListener("click", quitar_info, false);
-	/*document.getElementById(target_id).title = 'Desactivar Info'; //Cambiar tutulo al div
-	document.getElementById(target_id).classList.remove('floatingInfo');
+	document.getElementById('floatingInfo').removeEventListener("click", info_wms, false);
+        document.getElementById('floatingInfo').addEventListener("click", quitar_info, false);
+	document.getElementById('floatingInfo').title = 'Desactivar Info'; //Cambiar tutulo al div
+	/*document.getElementById(target_id).classList.remove('floatingInfo');
 	document.getElementById(target_id).classList.add('floatingInfo_desactivado');*/
 
 	map.on('click', function (e) {//https://codepen.io/mmsmdali/pen/LWEpym/
