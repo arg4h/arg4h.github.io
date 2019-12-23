@@ -6,6 +6,35 @@ array_temas = [
 	{"id":"id4", "value":"Todos", "texto":"Mostrar todos"}
 ];
 
+layers_tema1= [
+        {"id": 1, "layer": layer_1101},
+        {"id": 2, "layer": layer_rutas_provinciales}
+];
+
+temas = [{
+	"id": 1,
+	"value": "Uno",
+	"nombre":"Nacional",
+	"center":[-36.0, -64.0],
+	"zoom": 5,
+	//"layers": layers_tema1
+	"layers": [layer_1101, layer_rutas_provinciales]
+	},
+	{
+        "id": 2,
+        "value": "Dos",
+        "nombre":"Provincial",
+        "center":[-36.0, -60.0],
+        "zoom": 7
+	},
+        {
+        "id": 3,
+        "value": "Tres",
+        "nombre":"Local",
+        "center":[-35.0, -58.30],
+        "zoom": 11
+        }	
+];
 
 arraySegundoNivel = [
 	{"id": 1, "name": "Infraestructura Física", "cod": "1_IF", "visible":"cerrado"},

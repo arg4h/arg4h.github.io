@@ -486,7 +486,6 @@ function barratemas(){
                         var id = array_temas[i].id;
                         var value = array_temas[i].value;
                         var texto = array_temas[i].texto;
-                        console.log(texto);
 
                         var z = document.createElement("option");
                         z.setAttribute("value", value);
@@ -504,3 +503,42 @@ function barratemas(){
                 document.getElementById('floatingTemas').setAttribute('style', 'background-color:rgba(0,45,68,0.6);');
         }
 }
+
+function queryTema(){
+        console.log('tiene que cargar tema por el valor seleccionado');
+	var x = document.getElementById("idselecttema").value;
+        console.log(x);
+	llamarTema(x);
+}
+function llamarTema(x){
+	nombre = x;
+
+        for (var i=0; i<temas.length; i++){
+                var id_tema = temas[i].id;
+                var valor = temas[i].value;
+		var center = temas[i].center;
+		var zoom = temas[i].zoom;
+		
+		if (nombre == valor){
+			map.setView(center, zoom);
+			var layers = temas[i].layers
+			console.log(layers);
+			
+			for (var j=0; j<temas[i].layers.length; j++){
+				console.log(temas[i].layers[j]);
+				var layerOn = temas[i].layers[j];
+				console.log(layerOn);
+
+				layerOn.addTo(map);
+				layerOn.bringToFront(map);
+
+			}//cierra FOR interno
+		}
+	}// cierra FOR
+}
+
+
+
+
+
+
