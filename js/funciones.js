@@ -15,6 +15,13 @@ function creaDivs(){
 		divMostrar.addEventListener("click", mostrarDiv, false);
                 mapa.appendChild(divMostrar);
 
+		var div_temas = document.createElement('div');// *********div que abre el panel para select Tema
+		div_temas.id = 'floatingTemas';
+		div_temas.title = 'Activar Temas';
+		div_temas.addEventListener("click", barratemas, false);
+		mapa.appendChild(div_temas);
+		document.getElementById('floatingTemas').innerHTML = '<i class="fa fa-filter fa-2x = 2x Larger" style="color: black;"></i>';
+
 		var img_capas_ver = document.createElement("I");// imagen para botón capas
 		img_capas_ver.setAttribute("id", "id_img_ver");
 		img_capas_ver.className = "fa fa-bars fa-2x = 2x Larger";
@@ -55,7 +62,6 @@ function creaDivs(){
 		linkPrincipal.title= "Primer Item";
 		var tPrincipal = document.createTextNode("Argentina Contra el Hambre");
 
-
 		div_Capas.appendChild(linkVisible);
 		linkVisible.appendChild(img1);
 		divMostrar.appendChild(img_capas_ver);
@@ -75,15 +81,15 @@ function creaDivs(){
                 var codigo = arraySegundoNivel[j].cod;
                 //console.log(codigo);
                 var numero = j+1;
-                var li_id= "nivel2_li"+id;
+                var li_id= "n2_li"+id;
                 var ul = document.createElement("UL");
-                ul.setAttribute("id", "nivel2_"+id);
+                ul.setAttribute("id", "n2_"+id);
                 //console.log(ul);
                 var li=document.createElement("Li");
                 li.setAttribute("id", li_id);
 		li.className = "menu";
                 var link = document.createElement("A");
-                id_link = "id_link_nivel2_"+numero;
+                id_link = "id_link_n2_"+numero;
                 link.setAttribute("id", codigo);
 
                 link.href = "#";
@@ -457,3 +463,41 @@ function removeCapas1(){
 }*/
 }//CIERRA creardiv
 
+function barratemas(){
+	console.log('mostrar select temas');
+	var mapa = document.getElementById('map');
+
+	if(!document.getElementById('selectTemas')){
+		document.getElementById('floatingTemas').setAttribute('style', 'background-color:rgba(245,245,245,0.6);');
+		var div_tema = document.createElement('div');
+		div_tema.id = "selectTemas";
+		mapa.appendChild(div_tema);
+
+		var x = document.createElement("select");
+                x.setAttribute("id", "idselecttema");
+                x.setAttribute('onchange', 'queryTema()');
+		div_tema.appendChild(x);
+
+                for (var i=0; i<Object.keys(array_temas).length; i++){
+
+                        var id = array_temas[i].id;
+                        var value = array_temas[i].value;
+                        var texto = array_temas[i].texto;
+                        console.log(texto);
+
+                        var z = document.createElement("option");
+                        z.setAttribute("value", value);
+                        var t = document.createTextNode(texto);
+                        z.appendChild(t);
+
+                        x.appendChild(z);
+                }
+        } else {// si ya existe la barra la remuevo
+                var barra= document.getElementById('selectTemas');
+                mapa.removeChild(barra);
+                //layerCaminos_wms.params["cql_filter"] ="include; i_jerarquia like '%'";
+                //layerCaminos_wms.params["styles"] = "";
+                //layerCaminos_wms.redraw(true);
+                document.getElementById('floatingTemas').setAttribute('style', 'background-color:rgba(0,45,68,0.6);');
+        }
+}

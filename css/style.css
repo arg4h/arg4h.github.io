@@ -49,8 +49,8 @@ input:invalid{
 #floatingInfo{
         display:block;
         position:absolute;
-        top:10px;
-        right:60px;
+        top:62px;
+        right:10px;
         width: 40px;
         height: 40px;
         z-index:998;
@@ -66,8 +66,8 @@ input:invalid{
 #floatingInfo_desactivado{
 	display:block;
         position:absolute;
-        top:10px;
-        right:60px;
+        top:62px;
+        right:10px;
         width: 40px;
         height: 40px;
         z-index:998;
@@ -78,6 +78,35 @@ input:invalid{
         vertical-align: center;
         line-height: 50px;
 }
+
+#floatingTemas{
+	display:block;
+	position:absolute;
+        top:105px;
+        right:10px;
+        width: 40px;
+        height: 40px;
+	z-index:998;
+        background-color: rgba(0,45,68,0.6);
+        border-radius: 4px;
+        box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	text-align: center;
+	vertical-align: center;
+	line-height: 50px;
+}
+#selectTemas{
+	position:absolute;
+	top:105px;
+	right:50px;
+	width: 321;
+	height: 20px;
+	z-index:999;
+	background-color: rgba(0,45,68,0.6) !important;
+	padding:4px;
+	font-size:14px;
+	box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
 
 .toggleSettings {
 	position: absolute;
