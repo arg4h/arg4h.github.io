@@ -14,26 +14,29 @@ function creaDivs(){
 		divMostrar.title = 'Mostrar Árbol de Capas';
 		divMostrar.addEventListener("click", mostrarDiv, false);
                 mapa.appendChild(divMostrar);
+		document.getElementById('floatingMostrar').innerHTML = '<i class="fa fa-bars" style="color: white; font-size:15px"></i>'
+		
 
 		var div_temas = document.createElement('div');// *********div que abre el panel para select Tema
 		div_temas.id = 'floatingTemas';
 		div_temas.title = 'Activar Temas';
 		div_temas.addEventListener("click", barratemas, false);
 		mapa.appendChild(div_temas);
-		document.getElementById('floatingTemas').innerHTML = '<i class="fa fa-filter fa-2x = 2x Larger" style="color: black;"></i>';
+		document.getElementById('floatingTemas').innerHTML = '<i class="fa fa-filter" style="color: white; font-size:15px"></i>';// fa-2x = 2x Larger
 
-		var img_capas_ver = document.createElement("I");// imagen para botón capas
-		img_capas_ver.setAttribute("id", "id_img_ver");
-		img_capas_ver.className = "fa fa-bars fa-2x = 2x Larger";
+		//var img_capas_ver = document.createElement("I");// imagen para botón capas
+		//img_capas_ver.setAttribute("id", "id_img_ver");
+		//img_capas_ver.className = "fa fa-bars";//fa-2x = 2x Larger
 
 		var divButton_Info = document.createElement('div');// *******div para consultar info de capas
 		divButton_Info.id = 'floatingInfo';
 		divButton_Info.title = 'Activar Info';
 		mapa.appendChild(divButton_Info);
+		document.getElementById('floatingInfo').innerHTML = '<i class="fa fa-info" style="color: white; font-size:15px"></i>';
 
-		var img_info = document.createElement("I");// imagen para botón consultar info
-		img_info.setAttribute("id", "id_img_info");
-		img_info.className = "fa fa-info fa-2x = 2x Larger";
+		//var img_info = document.createElement("I");// imagen para botón consultar info
+		//img_info.setAttribute("id", "id_img_info");
+		//img_info.className = "fa fa-info";//fa-2x = 2x Larger
 
 		divButton_Info.addEventListener("click", info_wms, false);
 
@@ -64,8 +67,8 @@ function creaDivs(){
 
 		div_Capas.appendChild(linkVisible);
 		linkVisible.appendChild(img1);
-		divMostrar.appendChild(img_capas_ver);
-		divButton_Info.appendChild(img_info);
+		//divMostrar.appendChild(img_capas_ver);
+		//divButton_Info.appendChild(img_info);
 		div_Capas.appendChild(salto1);
 		div_Capas.appendChild(ulP);
 			

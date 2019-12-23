@@ -394,6 +394,7 @@ function quitar_info(){
         document.getElementById('floatingInfo').addEventListener("click", info_wms, false);
 
 	document.getElementById('floatingInfo').title = 'Activar Info'; //Cambiar tutulo al div cuando está desactivado
+	document.getElementById('floatingInfo').setAttribute('style', 'background-color:rgba(0,45,68,0.6);');
 	/*document.getElementById(target_id).classList.remove('floatingInfo_desactivado');
 	document.getElementById(target_id).classList.add('floatingInfo');*/
 	//document.getElementById(target_id).className =  "floatingInfo";
@@ -410,6 +411,7 @@ function info_wms(){
 	document.getElementById('floatingInfo').removeEventListener("click", info_wms, false);
         document.getElementById('floatingInfo').addEventListener("click", quitar_info, false);
 	document.getElementById('floatingInfo').title = 'Desactivar Info'; //Cambiar tutulo al div
+	document.getElementById('floatingInfo').setAttribute('style', 'background-color:rgba(245,245,245,0.6);');
 	/*document.getElementById(target_id).classList.remove('floatingInfo');
 	document.getElementById(target_id).classList.add('floatingInfo_desactivado');*/
 
