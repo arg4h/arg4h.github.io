@@ -198,15 +198,13 @@ function crearSubCarpetas(){////////////////////////////************************
 		}
 
 		if (link_recibe == id_nivel2){//Abro IF
-			console.log("Entro en  el IF");
-
 
                 var id = array_nivel3[i].id;
                 var name = array_nivel3[i].name;
                 var cod = array_nivel3[i].cod;
-                var li_id ="nivel3_li_"+id+"_"+cod;
+                var li_id = id+"_"+cod;
 		var subC = array_nivel3[i].subcarpeta;
-		var layer = array_nivel3[i].layer;
+		var layer = array_nivel3[i].nombre_layer;
 		console.log(layer);
                 if (subC=='no'){
                 	var name = array_nivel3[i].name;
@@ -362,7 +360,7 @@ function crearCapasNivel4(){
 }
 
 //function cargarCapas1(name, layeir){
-function cargarCapas1(){
+cargarCapas1 = function cargarCapas1(){
 	console.log(event);
 	var target = event.target
 	var link_id = target.id;
@@ -417,7 +415,7 @@ function cargarCapas1(){
 	target.removeEventListener("click", cargarCapas1, false);target.addEventListener("click", removeCapas1, false);
 }
 
-function removeCapas1(){
+removeCapas1 = function removeCapas1(){
 	var target = event.target;
 	var link_id = target.id;
 
@@ -504,16 +502,16 @@ function barratemas(){
         }
 }
 
-function queryTema(){
+function queryTema(){// llamar con onchange en el select
         console.log('tiene que cargar tema por el valor seleccionado');
 	var x = document.getElementById("idselecttema").value;
         console.log(x);
 	llamarTema(x);
 }
-function llamarTema(x){
+function llamarTema(x){ //llamar desde queryTema, pasar el valor seleccionado en select
 	nombre = x;
 
-        for (var i=0; i<temas.length; i++){
+        for (var i=0; i<temas.length; i++){// recorrer array 'temas' en json.js
                 var id_tema = temas[i].id;
                 var valor = temas[i].value;
 		var center = temas[i].center;
@@ -522,15 +520,40 @@ function llamarTema(x){
 		if (nombre == valor){
 			map.setView(center, zoom);
 			var layers = temas[i].layers
+			console.log('Mostrar el array de capas en temas');
 			console.log(layers);
 			
 			for (var j=0; j<temas[i].layers.length; j++){
 				console.log(temas[i].layers[j]);
 				var layerOn = temas[i].layers[j];
-				console.log(layerOn);
+				console.log(layerOn.wmsParams.name);
 
-				layerOn.addTo(map);
-				layerOn.bringToFront(map);
+				//SI LA capa YA ESTá prendida, no volver a cargar******************************
+				for (var q=0; q<Object.keys(array_nivel3).length; q++){
+					name_a3= array_nivel3[q].name;
+					visible_a3 = array_nivel3[q].visible;
+					var cod_a3 = array_nivel3[q].cod;
+					var id_a3 = array_nivel3[q].id;
+                			var li_id = id_a3+"_"+cod_a3;
+					console.log(li_id);
+
+					if(layerOn.wmsParams.name == name_a3){
+						if(visible_a3 == 'si'){
+							console.log('NO HACER NADA');
+						} else {
+							layerOn.addTo(map);
+							layerOn.bringToFront(map);
+							array_nivel3[q].visible = 'si';
+							var li = document.getElementById(li_id);
+							var imagen_ver = document.createElement("I");
+                                			imagen_ver.className = "fa fa-eye = 2x Larger";
+                                			li.appendChild(imagen_ver);
+							li.childNodes[0].removeEventListener("click", cargarCapas1, false);
+							li.childNodes[0].addEventListener("click", removeCapas1, false);
+						}
+					}
+				}
+				//****************************************************************************
 
 			}//cierra FOR interno
 		}

@@ -1,4 +1,4 @@
-//cambios 24_12_2019
+//cambios 24_12_2019 - para el select
 array_temas = [
 	{"id":"id", "value":"", "texto":"seleccionar...     "},
 	{"id":"id1", "value":"Uno", "texto":"Nacional"},
@@ -7,18 +7,12 @@ array_temas = [
 	{"id":"id4", "value":"Todos", "texto":"Mostrar todos"}
 ];
 
-layers_tema1= [
-        {"id": 1, "layer": layer_1101},
-        {"id": 2, "layer": layer_rutas_provinciales}
-];
-
 temas = [{
 	"id": 1,
 	"value": "Uno",
 	"nombre":"Nacional",
 	"center":[-36.0, -64.0],
 	"zoom": 5,
-	//"layers": layers_tema1
 	"layers": [layer_1101, layer_rutas_provinciales]
 	},
 	{
@@ -26,14 +20,16 @@ temas = [{
         "value": "Dos",
         "nombre":"Provincial",
         "center":[-36.0, -60.0],
-        "zoom": 7
+        "zoom": 7,
+	"layers": []
 	},
         {
         "id": 3,
         "value": "Tres",
         "nombre":"Local",
         "center":[-35.0, -58.30],
-        "zoom": 11
+        "zoom": 11,
+	"layers": []
         }	
 ];
 

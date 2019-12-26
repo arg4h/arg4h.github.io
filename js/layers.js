@@ -13,6 +13,7 @@ wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/wms?', {
 layer_ICV.addTo(map);*/
 
 layer_1101 = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+	name: "Rutas Nacionales",
         layers: 'observ:_3.4.1.1.6.rutas_nacionales_dnv18.view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
@@ -20,6 +21,7 @@ layer_1101 = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
 });
 
 layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+	name: "Rutas Provinciales",
         layers: 'observ:_3.4.1.7.red_vial_ign_ont_a_prov_view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',

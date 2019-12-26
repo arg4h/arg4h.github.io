@@ -3,6 +3,7 @@ var drawControl_Existe = false;
 var BING_KEY = 'AtfyQFLwAqMac5Le45E3ZNuHoolIPOnbS5lneKbIaWJI60e9cBfcvxZeBKjU-tH2';
 
 var countLayers = 1;
+var layersLoad = [];
 buttonInfo_activo = false;
 
 /*console.log(concatenar);
