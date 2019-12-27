@@ -8,7 +8,18 @@ html,body{
 	width: 100%;
 }
 
-a{
+#idselecttema {
+	font-family: Arial;
+	background-color: rgba(0, 45, 68, 0.6);
+}
+
+#idselecttema select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+#floatingCapas a{
 	color: white !important;	
 }
 
@@ -123,6 +134,7 @@ input:invalid{
 
 .menu ul li{
 	height:28px;
+	color: white;
     /*padding:0;
     list-style:none;
     width:100%;
