@@ -20,7 +20,8 @@ html,body{
 }
 
 #floatingCapas a{
-	color: white !important;	
+	color: white !important;
+	text-decoration: none;	
 }
 
 input:invalid{
