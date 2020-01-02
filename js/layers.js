@@ -69,6 +69,14 @@ layer_barrios_renabap  = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserve
         format: 'image/png',
         transparent: true
 });
+
+layer_vulnerabilidad = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	name: "Vulnerabilidad",
+	layers: 'observ:vulnerabilidad_3p_2016_view',
+	crs: L.CRS.EPSG4326,
+	format: 'image/png',
+	transparent: true
+});
 //********************************ABRE
 var ccrrVectorial;
 var comedoresVectorial;
