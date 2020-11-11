@@ -40,6 +40,13 @@ function creaDivs(){
 
 		divButton_Info.addEventListener("click", info_wms, false);
 
+		var share_button = document.createElement('div');
+		share_button.id = 'shareMapa';
+		share_button.title = 'Compartir';
+		share_button.addEventListener("click", compartirMapa, false);
+		mapa.appendChild(share_button);
+		document.getElementById('shareMapa').innerHTML = '<i class="fa fa-info" style="color: white; font-size:15px"></i>';
+
 		var linkVisible = document.createElement("A");
 		linkVisible.href = "#";
 		linkVisible.className = "toggleSettings";
@@ -554,14 +561,59 @@ function llamarTema(x){ //llamar desde queryTema, pasar el valor seleccionado en
 					}
 				}
 				//****************************************************************************
-
 			}//cierra FOR interno
 		}
 	}// cierra FOR
 }
 
+function compartirMapa(){
+	var array_capas= [];
+	console.log(map);
+	if(!map._lastCenter){
+		alert('Ocurrio un error. Vuelva a intentar');
+	} else {
+	var lastCenter = map._lastCenter;
+	console.log(lastCenter);
+	var center_map = '['+lastCenter.lat+','+lastCenter.lng+']';
+	
+	var zoom_map = map.getZoom();
 
+	var _layers = map._layers;
+	console.log(_layers);
+        layers = [];
 
+        for (var x in _layers) {
+                var _layer = _layers[x];
+                if (_layer.wmsParams) {
+                        console.log(_layer);
+			console.log(_layer._url);
+                        layers.push(_layer.wmsParams);
+			var url = _layer._url;
+                        console.log(layers);
+                }
+        }
 
+	crearPagina(center_map, zoom_map, url, layers);//LLAMAR FUNCTION con centro, zoom, url y layers
+	} //cierra el else
+}
 
+function crearPagina(center, zoom, url, array1){
+	var capaCargar = JSON.stringify(array1);
+        console.log("Enviar valores para armar página");
+        var params = 'envio=crearCapa&center='+center+'&zoom='+zoom+'&url='+url+'&data='+capaCargar;
+	console.log(params);
+        var conexion1 = new XMLHttpRequest();
+        conexion1.onreadystatechange = function(){
+                var respuesta = conexion1.response;
+                console.log(respuesta);// [{"username":"user_prueba"},{"username":"jmdiaz"}]
+                /*var variable = JSON.parse(respuesta);
+                console.log(variable.length);
 
+                for(var i=0; i<variable.length; ++i) {
+                        console.log(variable[i].username);
+                }*/
+        }
+        conexion1.open('post' , './php_scripts/capas.php', true);
+        conexion1.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        conexion1.send(params);
+}

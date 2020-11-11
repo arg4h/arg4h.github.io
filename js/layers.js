@@ -29,6 +29,7 @@ layer_rutas_provinciales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoser
 });
 
 layer_caminos_rurales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+	name: "Caminos Rurales",
         layers: 'c_rurales_6:caminos_rurales.view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
@@ -36,6 +37,7 @@ layer_caminos_rurales = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver
 });
 
 layer_red_ferrocarril = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+	name: "Red Ferroviaria",
         layers: 'observ:_3.4.2.2.5.red_adif_20.11.2018.view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
@@ -43,6 +45,7 @@ layer_red_ferrocarril = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver
 });
 
 layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?', {
+	name: "Zonas Horticolas",
         layers: 'observ:zonas_horticolas_view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
@@ -50,6 +53,7 @@ layer_zonas_frutih = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wm
 });
 
 layer_area_urbana = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	name: "Planta Urbana",
 	layers: 'c_rurales_6:idera_planta_urbana_view',
 	crs: L.CRS.EPSG4326,
 	format: 'image/png',
@@ -57,6 +61,7 @@ layer_area_urbana = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms
 });
 
 layer_centro_educ = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	name: "Centros Educativos",
 	layers: 'observ:centros_educativos_hab_view',
         crs: L.CRS.EPSG4326,
         format: 'image/png',
@@ -64,6 +69,7 @@ layer_centro_educ = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms
 });
 
 layer_barrios_renabap  = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/wms?' ,{
+	name: "Barrios RENABAP",
 	layers: 'observ:barrios_renabap_view',
 	crs: L.CRS.EPSG4326,
         format: 'image/png',

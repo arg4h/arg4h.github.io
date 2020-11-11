@@ -420,9 +420,10 @@ function info_wms(){
 
 	if( countLayers > 0){
 	var pixelPosition = e.layerPoint;
-	var _layers = this._layers,
-      	layers = [],
-      	versions = [],
+	var _layers = map._layers;
+	console.log(_layers);
+      	layers = [];
+      	versions = [];
       	styles = [];
 
     	for (var x in _layers) {
