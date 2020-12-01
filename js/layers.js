@@ -210,8 +210,8 @@ function loadMancha(){
 			console.log(array_nivel3[i]);
 			var nombre = array_nivel3[i].name;
 
-			if (nombre == 'Comedores Comunitarios'){
-				array_nivel3[i].nombre_layer = comedoresVectorial;
+			if (nombre == 'Mancha urbana'){
+				array_nivel3[i].nombre_layer = manchaVectorial;
 				console.log(array_nivel3[i]);
 			}
 		}
