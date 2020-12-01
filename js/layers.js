@@ -177,10 +177,10 @@ function loadFeriasF(){
 
 function loadMancha(){
 	console.log('Llamando esta funcion');
-	var urlComedores = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/comedores_comunitarios.geojson';
+	var urlMancha = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/129_Mancha_urbana.geojson';
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', urlComedores);
+	xhr.open('GET', urlMancha);
 
 	xhr.onload = function(e) {
 		var data = JSON.parse(this.response);
@@ -194,7 +194,7 @@ function loadMancha(){
                 	fillOpacity: 0.8
         	};
 
-		comedoresVectorial = L.geoJson(data, {
+		manchaVectorial = L.geoJson(data, {
 			pointToLayer: function (feature, latlng) {
 				return L.circleMarker(latlng, geojsonMarkerOptions);
 			},
@@ -202,8 +202,8 @@ function loadMancha(){
 			onEachFeature: onEachFeature
 		});
 
-		comedoresVectorial.addTo(map);
-		comedoresVectorial.bringToFront();
+		manchaVectorial.addTo(map);
+		manchaVectorial.bringToFront();
 
 		for (var i=0; i<Object.keys(array_nivel3).length; i++){
 			console.log(array_nivel3[i]);
