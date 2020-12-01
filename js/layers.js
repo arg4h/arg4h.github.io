@@ -175,6 +175,51 @@ function loadFeriasF(){
         xhr.send();
 } //cierra loadFeriasF
 
+function loadMancha(){
+	console.log('Llamando esta funcion');
+	var urlComedores = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/comedores_comunitarios.geojson';
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', urlComedores);
+
+	xhr.onload = function(e) {
+		var data = JSON.parse(this.response);
+
+		var geojsonMarkerOptions = {
+                	radius: 5,
+                	fillColor: "#ff7800",
+                	color: "#000",
+                	weight: 1,
+                	opacity: 1,
+                	fillOpacity: 0.8
+        	};
+
+		comedoresVectorial = L.geoJson(data, {
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, geojsonMarkerOptions);
+			},
+			style: comedoresStyle,
+			onEachFeature: onEachFeature
+		});
+
+		comedoresVectorial.addTo(map);
+		comedoresVectorial.bringToFront();
+
+		for (var i=0; i<Object.keys(array_nivel3).length; i++){
+			console.log(array_nivel3[i]);
+			var nombre = array_nivel3[i].name;
+
+			if (nombre == 'Comedores Comunitarios'){
+				array_nivel3[i].nombre_layer = comedoresVectorial;
+				console.log(array_nivel3[i]);
+			}
+		}
+	}
+
+	xhr.send();
+	//return manchaVectorial;
+} //cierra loadMancha
+
 function loadGeojson(){
 	var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';
 
