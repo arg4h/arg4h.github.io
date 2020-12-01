@@ -81,6 +81,7 @@ layer_vulnerabilidad = L.tileLayer.wms('https://ide.transporte.gob.ar/geoserver/
 var ccrrVectorial;
 var comedoresVectorial;
 var feriasfVectorial;
+var manchaVectorial;
 //var layerP = L.geoJson.pouch("https://90705519-98e2-4acf-b321-1466df6704c8-bluemix.cloudant.com/ccrr").addTo(map);
 //console.log(layerP);
 
