@@ -88,9 +88,9 @@ var manchaVectorial;
 function comedoresStyle(feature) {
   	return {
     		fillColor: "#FF00FF",
-    		fillOpacity: 1,
+    		//fillOpacity: 1,
     		color: '#B04173',
-        transparente: true
+        fillOpacity: .60
   	};
 }
 function loadComedores(){
