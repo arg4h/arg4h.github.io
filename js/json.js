@@ -40,7 +40,7 @@ arraySegundoNivel = [
         {"id": 4, "name": "Infraestructura Productiva", "cod": "4_P"},
         {"id": 5, "name": "Capas Complementarias", "cod": "5_CC"},
         {"id": 6, "name": "Estudios de Vulnerabilidad Social", "cod": "6_EVS"},
-        //{"id": 7, "name": "Mancha Urbana", "cod": "7_MU"}        
+        {"id": 7, "name": "Mancha Urbana", "cod": "7_MU"}        
 ];
 
 array_nivel3 = [
