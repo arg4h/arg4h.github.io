@@ -90,6 +90,7 @@ function comedoresStyle(feature) {
     		fillColor: "#FF00FF",
     		fillOpacity: 1,
     		color: '#B04173',
+        transparente: true
   	};
 }
 function loadComedores(){
