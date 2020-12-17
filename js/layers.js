@@ -178,10 +178,9 @@ function loadFeriasF(){
 } //cierra loadFeriasF
 
 
-
-function loadMancha(){
-	console.log('Llamando esta funcion');
-	var urlMancha = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/129_Mancha_urbana.geojson';
+//129 - Pte Peron
+function load129(){
+	var urlMancha = 'https://raw.githubusercontent.com/javiarch/manchaurbana_2020/main/129_ManchaUrbana_2020.geojson';
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', urlMancha);
