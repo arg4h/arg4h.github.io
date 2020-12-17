@@ -379,9 +379,49 @@ cargarCapas1 = function cargarCapas1(){
 			var llamar_funcion = array_nivel3[i].load;
       var url = array_nivel3[i].url;
       
+      //modificado
 			if(vectorial == 'si'){
         
-				llamar_funcion(); //<==================================agrego la capa llamando a la funcion
+        var xhr = new XMLHttpRequest();
+	xhr.open('GET', url);
+
+	xhr.onload = function(e) {
+		var data = JSON.parse(this.response);
+
+		var geojsonMarkerOptions = {
+                	radius: 5,
+                	fillColor: "#ff7800",
+                	color: "#000",
+                	weight: 1,
+                	opacity: 1,
+                	fillOpacity: 0.8
+        	};
+
+		manchaVectorial = L.geoJson(data, {
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, geojsonMarkerOptions);
+			},
+			style: comedoresStyle,
+			onEachFeature: onEachFeature
+		});
+
+		manchaVectorial.addTo(map);
+		manchaVectorial.bringToFront();
+
+		for (var i=0; i<Object.keys(array_nivel3).length; i++){
+			console.log(array_nivel3[i]);
+			var nombre = array_nivel3[i].name;
+
+			if (nombre == 'Mancha urbana nov 2020'){
+				array_nivel3[i].nombre_layer = manchaVectorial;
+				console.log(array_nivel3[i]);
+			}
+		}
+	}
+
+	xhr.send();
+        
+				//llamar_funcion(); //<==================================agrego la capa llamando a la funcion
         
         
 			} else {
