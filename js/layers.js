@@ -178,52 +178,6 @@ function loadFeriasF(){
 } //cierra loadFeriasF
 
 
-//129 - Pte Peron
-function load129(cod){
-  if (cod == 'MU_2_MU'){
-	  var urlMancha = 'https://raw.githubusercontent.com/javiarch/manchaurbana_2020/main/129_ManchaUrbana_2020.geojson';
-  }  
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', urlMancha);
-
-	xhr.onload = function(e) {
-		var data = JSON.parse(this.response);
-
-		var geojsonMarkerOptions = {
-                	radius: 5,
-                	fillColor: "#ff7800",
-                	color: "#000",
-                	weight: 1,
-                	opacity: 1,
-                	fillOpacity: 0.8
-        	};
-
-		manchaVectorial = L.geoJson(data, {
-			pointToLayer: function (feature, latlng) {
-				return L.circleMarker(latlng, geojsonMarkerOptions);
-			},
-			style: comedoresStyle,
-			onEachFeature: onEachFeature
-		});
-
-		manchaVectorial.addTo(map);
-		manchaVectorial.bringToFront();
-
-		for (var i=0; i<Object.keys(array_nivel3).length; i++){
-			console.log(array_nivel3[i]);
-			var nombre = array_nivel3[i].name;
-
-			if (nombre == 'Mancha urbana nov 2020'){
-				array_nivel3[i].nombre_layer = manchaVectorial;
-				console.log(array_nivel3[i]);
-			}
-		}
-	}
-
-	xhr.send();
-	//return mancha129;
-} //cierra loadMancha129
-
 function loadGeojson(){
 	var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';
 

@@ -57,8 +57,7 @@ array_nivel3 = [
 	{"id":10, "id_n2": "3_Soc", "name":"Vulnerabilidad", "cod":"So_4_Vu", "subcarpeta":"no", "visible":"no", "work":"observ", "nombre_layer": "layer_vulnerabilidad", "load": layer_vulnerabilidad},
 	{"id":11, "id_n2": "4_P", "name":"Ferias Francas", "cod":"P_2_FF", "subcarpeta":"no", "visible":"no", "nombre_layer": feriasfVectorial, "load": loadFeriasF, "vectorial":"si"},
 	{"id":12, "id_n2": "3_TFM", "name":"Completar", "cod":"TFM_1_A", "subcarpeta":"si"},
-  {"id":13, "id_n2": "7_MU", "name":"Mancha urbana nov 2020", "cod":"MU_1_MU", "subcarpeta":"no", "visible":"no", "nombre_layer": manchaVectorial, "load": loadMancha, "vectorial":"si"},
-  {"id":14, "id_n2": "7_MU", "name":"129_Pte_Peron, "cod":"MU_2_MU", "subcarpeta":"no", "visible":"no", "nombre_layer": mancha129, "load": load129, "vectorial":"si"}
+  {"id":13, "id_n2": "7_MU", "name":"Mancha urbana nov 2020", "cod":"MU_1_MU", "subcarpeta":"no", "visible":"no", "nombre_layer": manchaVectorial, "load": loadMancha, "vectorial":"si"}  
 ];
 
 //NOTA: cuando es vectorial: 'si', en load es la funcion que crea la capa y la agrega al mapa ----- loadComedores.
