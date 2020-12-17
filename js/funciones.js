@@ -377,8 +377,13 @@ cargarCapas1 = function cargarCapas1(){
 
 			var vectorial = array_nivel3[i].vectorial;
 			var llamar_funcion = array_nivel3[i].load;
+      var url = array_nivel3[i].url;
+      
 			if(vectorial == 'si'){
+        
 				llamar_funcion(); //<==================================agrego la capa llamando a la funcion
+        
+        
 			} else {
 				load_layer.addTo(map); load_layer.bringToFront(); //<==================================agrego la capa
 			}
