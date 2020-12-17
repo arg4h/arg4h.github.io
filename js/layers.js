@@ -177,6 +177,8 @@ function loadFeriasF(){
         xhr.send();
 } //cierra loadFeriasF
 
+
+
 function loadMancha(){
 	console.log('Llamando esta funcion');
 	var urlMancha = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/129_Mancha_urbana.geojson';
@@ -219,8 +221,8 @@ function loadMancha(){
 	}
 
 	xhr.send();
-	//return manchaVectorial;
-} //cierra loadMancha
+	//return mancha129;
+} //cierra loadMancha129
 
 function loadGeojson(){
 	var urlCity = 'https://raw.githubusercontent.com/geo4aguilares/Repositorio/master/ingenios.geojson';
