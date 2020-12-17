@@ -179,9 +179,10 @@ function loadFeriasF(){
 
 
 //129 - Pte Peron
-function load129(){
-	var urlMancha = 'https://raw.githubusercontent.com/javiarch/manchaurbana_2020/main/129_ManchaUrbana_2020.geojson';
-
+function load129(cod){
+  if (cod == 'MU_2_MU'){
+	  var urlMancha = 'https://raw.githubusercontent.com/javiarch/manchaurbana_2020/main/129_ManchaUrbana_2020.geojson';
+  }  
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', urlMancha);
 
