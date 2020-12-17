@@ -211,7 +211,7 @@ function loadMancha(){
 			console.log(array_nivel3[i]);
 			var nombre = array_nivel3[i].name;
 
-			if (nombre == 'Mancha urbana'){
+			if (nombre == 'Mancha urbana nov 2020'){
 				array_nivel3[i].nombre_layer = manchaVectorial;
 				console.log(array_nivel3[i]);
 			}
