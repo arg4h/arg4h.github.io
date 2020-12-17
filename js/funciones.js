@@ -397,7 +397,7 @@ cargarCapas1 = function cargarCapas1(){
                 	fillOpacity: 0.8
         	};
 
-		manchaVectorial = L.geoJson(data, {
+		nombre_layer = L.geoJson(data, {
 			pointToLayer: function (feature, latlng) {
 				return L.circleMarker(latlng, geojsonMarkerOptions);
 			},
@@ -405,15 +405,15 @@ cargarCapas1 = function cargarCapas1(){
 			onEachFeature: onEachFeature
 		});
 
-		manchaVectorial.addTo(map);
-		manchaVectorial.bringToFront();
+		nombre_layer.addTo(map);
+		nombre_layer.bringToFront();
 
 		for (var i=0; i<Object.keys(array_nivel3).length; i++){
 			console.log(array_nivel3[i]);
 			var nombre = array_nivel3[i].name;
 
 			if (nombre == 'Mancha urbana nov 2020'){
-				array_nivel3[i].nombre_layer = manchaVectorial;
+				array_nivel3[i].nombre_layer = nombre_layer;
 				console.log(array_nivel3[i]);
 			}
 		}
