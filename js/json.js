@@ -7,6 +7,13 @@ array_temas = [
 	{"id":"id4", "value":"Todos", "texto":"Mostrar todos"}
 ];
 
+var arraySelectR = [
+	{"textR": "032", "idR":1, "value":"032"},
+	{"textR": "100", "idR":2, "value":"100"},
+	{"textR": "120", "idR":3, "value":"120"},
+  {"textR": "129", "idR":3, "value":"129"}
+]
+
 temas = [{
 	"id": 1,
 	"value": "Uno",

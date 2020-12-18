@@ -22,11 +22,19 @@ function creaDivs(){
 		div_temas.title = 'Activar Temas';
 		div_temas.addEventListener("click", barratemas, false);
 		mapa.appendChild(div_temas);
-		document.getElementById('floatingTemas').innerHTML = '<i class="fa fa-filter" style="color: white; font-size:15px"></i>';// fa-2x = 2x Larger
+		document.getElementById('floatingTemas').innerHTML = '<i class="fa fa-search" style="color: white; font-size:15px"></i>';// fa-2x = 2x Larger
 
 		//var img_capas_ver = document.createElement("I");// imagen para botón capas
 		//img_capas_ver.setAttribute("id", "id_img_ver");
 		//img_capas_ver.className = "fa fa-bars";//fa-2x = 2x Larger
+    
+    var divButton_Filter = document.createElement('div');// *******div para filtrar por datos
+		divButton_Filter.id = 'buttonFilter';
+		divButton_Filter.title = 'Filter';
+		mapa.appendChild(divButton_Filter);
+		document.getElementById('buttonFilter').innerHTML = '<i class="fas fa-filter" style="color: white; font-size:12px"></i>';
+
+		divButton_Filter.addEventListener("click", divFilter, false);
 
 		var divButton_Info = document.createElement('div');// *******div para consultar info de capas
 		divButton_Info.id = 'floatingInfo';
