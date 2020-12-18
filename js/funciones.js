@@ -32,9 +32,9 @@ function creaDivs(){
 		divButton_Filter.id = 'buttonFilter';
 		divButton_Filter.title = 'Filter';
 		mapa.appendChild(divButton_Filter);
-		document.getElementById('buttonFilter').innerHTML = '<i class="fas fa-filter" style="color: white; font-size:12px"></i>';
+		document.getElementById('buttonFilter').innerHTML = '<i class="fa fa-filter" style="color: white; font-size:12px"></i>';
 
-		divButton_Filter.addEventListener("click", divFilter, false);
+		//divButton_Filter.addEventListener("click", divFilter, false);
 
 		var divButton_Info = document.createElement('div');// *******div para consultar info de capas
 		divButton_Info.id = 'floatingInfo';
@@ -560,6 +560,64 @@ function barratemas(){
                 document.getElementById('floatingTemas').setAttribute('style', 'background-color:rgba(0,45,68,0.6);');
         }
 }
+
+//abre filter por partido*****
+function divFilter(){
+	console.log('Ejecutar filter');
+	var mapa = document.getElementById('map');
+	if(!document.getElementById('selectFilter')){
+		document.getElementById('buttonFilter').setAttribute('style', 'background-color:rgba(245,245,245,0.6);');
+                var div_filter = document.createElement('div');
+                div_filter.id = "selectFilter";
+                mapa.appendChild(div_filter);
+
+		var label = document.createElement("LABEL");
+		var text = document.createTextNode("Filtrar por Partido");
+		label.appendChild(text);
+
+		var select = document.createElement("select");
+                select.setAttribute("id", "idSelectFilter");
+                //select.setAttribute('onchange', 'queryFilter()');
+		select.addEventListener("change", queryFilter);
+
+		div_filter.appendChild(label);
+		div_filter.appendChild(select);
+
+		var opt = document.createElement('OPTION');
+		opt.setAttribute("value", "Seleccionar");
+		var textOp = document.createTextNode("Seleccionar...");
+		opt.appendChild(textOp);
+		select.appendChild(opt);
+
+		for (var j=0; j<Object.keys(arraySelectR).length; j++){//recorrer el array para cargar los valores en el select Categoria
+
+                	var id = arraySelectR[j].id;
+                	var text = arraySelectR[j].textR;
+                	var value = arraySelectR[j].value;
+
+                	var z = document.createElement("OPTION");
+                	z.setAttribute("value", value);
+                	var t = document.createTextNode(text);
+                	z.appendChild(t);
+
+                	select.appendChild(z);
+        	}
+		var optT = document.createElement('OPTION');
+                optT.setAttribute("value", "Mancha urbana");
+                var textOpT = document.createTextNode("Mancha urbana");
+                optT.appendChild(textOpT);
+                select.appendChild(optT);
+		
+				
+	} else {
+		document.getElementById('buttonFilter').setAttribute('style', 'background-color:rgba(0,45,68,0.6);');
+		var barra= document.getElementById('selectFilter');
+                mapa.removeChild(barra);
+		crimeslayer.clearLayers();
+		showTodos();
+	}
+}
+//cierra filter por partido***
 
 function queryTema(){// llamar con onchange en el select
         console.log('tiene que cargar tema por el valor seleccionado');
