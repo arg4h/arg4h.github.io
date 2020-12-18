@@ -1,3 +1,19 @@
+function comedoresStyle(feature) {
+  	return {
+    		fillColor: "#FF00FF",
+    		//fillOpacity: 1,
+    		color: '#B04173',
+        fillOpacity: .60
+  	};
+}
+
+manchaVectorial = L.geoJson({
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, geojsonMarkerOptions);
+			},
+			style: comedoresStyle,
+			onEachFeature: onEachFeature
+		});
 
 wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/wms?', { 
   layers: 'observ:_3.2.3.1.subte_red_usig_ont_a_view',
@@ -85,14 +101,7 @@ var manchaVectorial;
 //var layerP = L.geoJson.pouch("https://90705519-98e2-4acf-b321-1466df6704c8-bluemix.cloudant.com/ccrr").addTo(map);
 //console.log(layerP);
 
-function comedoresStyle(feature) {
-  	return {
-    		fillColor: "#FF00FF",
-    		//fillOpacity: 1,
-    		color: '#B04173',
-        fillOpacity: .60
-  	};
-}
+
 function loadComedores(){
 	console.log('Llamando esta funcion');
 	var urlComedores = 'https://raw.githubusercontent.com/arg4h/arg4h.github.io/master/datos/comedores_comunitarios.geojson';
@@ -198,14 +207,15 @@ function loadMancha(){
                 	fillOpacity: 0.8
         	};
 
-		manchaVectorial = L.geoJson(data, {
+		/*manchaVectorial = L.geoJson(data, {
 			pointToLayer: function (feature, latlng) {
 				return L.circleMarker(latlng, geojsonMarkerOptions);
 			},
 			style: comedoresStyle,
 			onEachFeature: onEachFeature
-		});
+		});*/
 
+    manchaVectorial.addData(data);
 		manchaVectorial.addTo(map);
 		manchaVectorial.bringToFront();
 
