@@ -63,7 +63,7 @@ function creaDivs(){
                 linkPrincipal.href = "#";
 		//linkPrincipal.onclick= function(){cargarCarpetasNivel2()};
 		linkPrincipal.title= "Primer Item";
-		var tPrincipal = document.createTextNode("Argentina Contra el Hambre");
+		var tPrincipal = document.createTextNode("Prototipo v 0.1");
 
 		div_Capas.appendChild(linkVisible);
 		linkVisible.appendChild(img1);
