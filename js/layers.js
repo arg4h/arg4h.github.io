@@ -1,4 +1,4 @@
-function comedoresStyle(feature) {
+/*function comedoresStyle(feature) {
   	return {
     		fillColor: "#FF00FF",
     		//fillOpacity: 1,
@@ -13,7 +13,7 @@ manchaVectorial = L.geoJson({
 			},
 			style: comedoresStyle,
 			onEachFeature: onEachFeature
-		});
+		});*/
 
 wmsTopoIcgc = L.tileLayer.wms('http://ide.transporte.gob.ar/geoserver/wms?', { 
   layers: 'observ:_3.2.3.1.subte_red_usig_ont_a_view',
@@ -98,9 +98,18 @@ var ccrrVectorial;
 var comedoresVectorial;
 var feriasfVectorial;
 var manchaVectorial;
+
 //var layerP = L.geoJson.pouch("https://90705519-98e2-4acf-b321-1466df6704c8-bluemix.cloudant.com/ccrr").addTo(map);
 //console.log(layerP);
 
+function comedoresStyle(feature) {
+  	return {
+    		fillColor: "#FF00FF",
+    		//fillOpacity: 1,
+    		color: '#B04173',
+        fillOpacity: .60
+  	};
+}
 
 function loadComedores(){
 	console.log('Llamando esta funcion');
@@ -207,15 +216,15 @@ function loadMancha(){
                 	fillOpacity: 0.8
         	};
 
-		/*manchaVectorial = L.geoJson(data, {
+		manchaVectorial = L.geoJson(data, {
 			pointToLayer: function (feature, latlng) {
 				return L.circleMarker(latlng, geojsonMarkerOptions);
 			},
 			style: comedoresStyle,
 			onEachFeature: onEachFeature
-		});*/
+		});
 
-    manchaVectorial.addData(data);
+    //manchaVectorial.addData(data);
 		manchaVectorial.addTo(map);
 		manchaVectorial.bringToFront();
 
