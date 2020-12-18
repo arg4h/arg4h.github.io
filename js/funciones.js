@@ -34,7 +34,7 @@ function creaDivs(){
 		mapa.appendChild(divButton_Filter);
 		document.getElementById('buttonFilter').innerHTML = '<i class="fa fa-filter" style="color: white; font-size:12px"></i>';
 
-		//divButton_Filter.addEventListener("click", divFilter, false);
+		divButton_Filter.addEventListener("click", divFilter, false);
 
 		var divButton_Info = document.createElement('div');// *******div para consultar info de capas
 		divButton_Info.id = 'floatingInfo';
@@ -560,6 +560,17 @@ function barratemas(){
                 document.getElementById('floatingTemas').setAttribute('style', 'background-color:rgba(0,45,68,0.6);');
         }
 }
+
+//abre queryFilter
+function queryFilter(){
+        var valueSelect = document.getElementById("idSelectFilter").value;
+        //crimeslayer.options.filter = catFilter(feature);
+        //console.log(crimeslayer);
+        //catFilter();
+	//crimeslayer.clearLayers();
+	//showTodos();
+}
+//cierra queryFilter
 
 //abre filter por partido*****
 function divFilter(){
