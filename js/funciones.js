@@ -417,7 +417,9 @@ cargarCapas1 = function cargarCapas1(){
 				console.log(array_nivel3[i]);
 			} else if (nombre == 'Pte Peron 2020'){
         array_nivel3[i].nombre_layer = nombre_layer;
-				console.log(array_nivel3[i]);
+				       
+      } else if (nombre == 'Mancha Urbana 20202'){
+        array_nivel3[i].nombre_layer = nombre_layer;
         
       }
 		}
