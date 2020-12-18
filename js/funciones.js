@@ -564,11 +564,11 @@ function barratemas(){
 //abre queryFilter
 function queryFilter(){
         var valueSelect = document.getElementById("idSelectFilter").value;
-        //crimeslayer.options.filter = catFilter(feature);
+        //manchaVectorial.options.filter = catFilter(feature);
         //console.log(crimeslayer);
         //catFilter();
-	//crimeslayer.clearLayers();
-	//showTodos();
+	manchaVectorial.clearLayers();
+	showTodos();
 }
 //cierra queryFilter
 
