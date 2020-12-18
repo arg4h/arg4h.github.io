@@ -567,8 +567,16 @@ function queryFilter(){
         //manchaVectorial.options.filter = catFilter(feature);
         //console.log(crimeslayer);
         //catFilter();
+  
+  if (!manchaVectorial){
+    
+    console.log("no existe");
+  } else {
+    
+    console.log(manchaVectorial);
+  }
 	manchaVectorial.clearLayers();
-	showTodos();
+	//showTodos();
 }
 //cierra queryFilter
 
