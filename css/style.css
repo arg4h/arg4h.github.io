@@ -123,6 +123,21 @@ input:invalid{
         line-height: 30px;
 }
 
+#selectFilter{
+        display: block;
+        position:absolute;
+        top:141px;
+        right:50px;
+        width: 240px !important;
+        z-index:999;
+        //background-color:rgba(238,238,238,0.4);
+        background-color:rgba(0,45,68,0.6);
+        padding:4px;
+        //border:1px solid gray;
+        font-size:12px;
+        max-height: 45%;
+        overflow: auto;
+}
 
 .toggleSettings {
 	position: absolute;

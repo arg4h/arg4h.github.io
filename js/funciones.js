@@ -599,6 +599,12 @@ function divFilter(){
 		var textOp = document.createTextNode("Seleccionar...");
 		opt.appendChild(textOp);
 		select.appendChild(opt);
+    
+    var optT = document.createElement('OPTION');
+                optT.setAttribute("value", "Mancha Urbana");
+                var textOpT = document.createTextNode("Mancha Urbana");
+                optT.appendChild(textOpT);
+                select.appendChild(optT);
 
 		for (var j=0; j<Object.keys(arraySelectR).length; j++){//recorrer el array para cargar los valores en el select Categoria
 
@@ -613,11 +619,6 @@ function divFilter(){
 
                 	select.appendChild(z);
         	}
-		var optT = document.createElement('OPTION');
-                optT.setAttribute("value", "Mancha urbana");
-                var textOpT = document.createTextNode("Mancha urbana");
-                optT.appendChild(textOpT);
-                select.appendChild(optT);
 		
 				
 	} else {
